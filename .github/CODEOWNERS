@@ -1,0 +1,19 @@
+# Design owns the decisions. Engineering co-owns code quality.
+# Teams in the tawan-design GitHub org: design-system, frontend-leads.
+
+# Default: Design System team reviews everything
+*                                   @tawan-design/design-system
+
+# Design decisions: Design team approval required
+/packages/tokens/                   @tawan-design/design-system
+/DESIGN.md                          @tawan-design/design-system
+/AGENTS.md                          @tawan-design/design-system
+/.claude/                           @tawan-design/design-system
+/apps/docs/                         @tawan-design/design-system
+
+# Component code: Design (look and behavior) + Engineering (code quality)
+/packages/ui/src/                   @tawan-design/design-system @tawan-design/frontend-leads
+
+# Build, CI, publishing: Engineering
+/.github/workflows/                 @tawan-design/frontend-leads
+/packages/*/package.json            @tawan-design/frontend-leads @tawan-design/design-system

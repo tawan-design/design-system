@@ -1,0 +1,32 @@
+{
+  "$description": "Semantic tokens, Dark mode. Figma Variables collection: Semantic / mode: Dark.",
+  "color": {
+    "$type": "color",
+    "bg": {
+      "surface":     { "$value": "{color.neutral.950}" },
+      "subtle":      { "$value": "{color.neutral.900}" },
+      "muted":       { "$value": "{color.neutral.800}" },
+      "brand":       { "$value": "{color.blue.500}" },
+      "brand-hover": { "$value": "{color.blue.300}" },
+      "brand-soft":  { "$value": "#1f42b84d" },
+      "danger":      { "$value": "{color.red.400}" },
+      "danger-soft": { "$value": "#d92d2d33" },
+      "success-soft":{ "$value": "#1d8a4a33" },
+      "overlay":     { "$value": "#000000b3" }
+    },
+    "text": {
+      "default":  { "$value": "{color.neutral.50}" },
+      "muted":    { "$value": "{color.neutral.400}" },
+      "brand":    { "$value": "{color.blue.300}" },
+      "on-brand": { "$value": "{color.neutral.0}" },
+      "danger":   { "$value": "{color.red.400}" },
+      "success":  { "$value": "{color.green.400}" }
+    },
+    "border": {
+      "default": { "$value": "{color.neutral.800}" },
+      "strong":  { "$value": "{color.neutral.600}" },
+      "focus":   { "$value": "{color.blue.300}" },
+      "danger":  { "$value": "{color.red.400}" }
+    }
+  }
+}

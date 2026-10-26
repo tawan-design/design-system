@@ -1,0 +1,27 @@
+import { Meta } from "@storybook/blocks";
+import { ColorTokens, SpacingTokens, RadiusTokens, TypeTokens } from "./TokenBlocks";
+
+<Meta title="Foundations/Tokens" />
+
+# Foundations
+
+Every value below is **generated from `packages/tokens/src`**, which is exported from Figma Variables.
+Switch **Theme** in the toolbar to see Dark mode.
+
+> Components may only use **semantic** tokens (`bg/surface`, `text/muted`), never primitives (`blue/600`) or raw values.
+
+## Color
+
+<ColorTokens />
+
+## Spacing
+
+<SpacingTokens />
+
+## Radius
+
+<RadiusTokens />
+
+## Typography
+
+<TypeTokens />

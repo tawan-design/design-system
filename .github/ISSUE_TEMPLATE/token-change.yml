@@ -1,0 +1,22 @@
+name: Token change request
+description: Request a new token or a change to an existing one
+labels: ["tokens", "needs-design-review"]
+body:
+  - type: input
+    id: token
+    attributes:
+      label: Token name(s)
+      placeholder: e.g. color/bg/warning-soft
+    validations: { required: true }
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it needed?
+    validations: { required: true }
+  - type: checkboxes
+    id: modes
+    attributes:
+      label: Modes
+      options:
+        - label: Light value defined
+        - label: Dark value defined

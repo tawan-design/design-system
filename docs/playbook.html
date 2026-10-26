@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System Playbook</title>
+<style>
+:root{
+  --bg:#f7f7f5; --surface:#ffffff; --sunken:#f0f0ec; --text:#1c1d1f; --muted:#62656b; --faint:#8b8e94;
+  --border:#e3e3de; --accent:#2a55e6; --accent-soft:#e8eeff; --code-bg:#f3f3ef; --prompt-bg:#f4f6ff; --prompt-border:#c9d5ff;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#121316; --surface:#1a1b1f; --sunken:#202126; --text:#ececec; --muted:#a3a6ad; --faint:#7c7f86;
+    --border:#2c2e34; --accent:#8fb0ff; --accent-soft:#1f2a4a; --code-bg:#202126; --prompt-bg:#18203a; --prompt-border:#2f3f73;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+
+/* layout */
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1240px;margin:0 auto}
+aside{position:sticky;top:0;height:100vh;overflow-y:auto;padding:28px 16px 40px 24px;border-right:1px solid var(--border)}
+main{padding:40px 56px 120px;min-width:0}
+.brand{font-weight:700;font-size:15px;margin:0 0 4px}
+.brand-sub{color:var(--faint);font-size:12px;margin:0 0 20px}
+.search{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font:inherit;font-size:13px;margin-bottom:16px}
+nav ul{list-style:none;margin:0;padding:0}
+nav>ul>li{margin-bottom:4px}
+.nav-ch{display:flex;gap:10px;align-items:center;padding:6px 8px;border-radius:8px;color:var(--text);font-weight:600;font-size:13.5px}
+.nav-ch span{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--sunken);color:var(--muted);font-size:11px;flex:none}
+.nav-ch:hover{background:var(--sunken);text-decoration:none}
+nav ul ul{margin:2px 0 8px 18px;border-left:1px solid var(--border)}
+nav ul ul a{display:block;padding:3px 10px;color:var(--muted);font-size:13px;line-height:1.4;border-left:2px solid transparent;margin-left:-1px}
+nav ul ul a:hover{color:var(--text);text-decoration:none}
+nav a.active{color:var(--accent)!important;border-left-color:var(--accent)}
+.nav-ch.active span{background:var(--accent);color:#fff}
+
+/* hero */
+.hero h1{font-size:34px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+.hero p{color:var(--muted);margin:0 0 20px;max-width:680px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.legend span{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.qtitle{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:0 0 8px;font-weight:600}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-bottom:48px}
+.qcard{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:13.5px;box-shadow:var(--shadow)}
+.qcard:hover{border-color:var(--accent);text-decoration:none}
+
+/* chapters */
+.chapter{padding-top:16px;margin-bottom:56px}
+.ch-head{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px}
+.ch-num{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.ch-head h2{font-size:26px;margin:4px 0 4px;letter-spacing:-.01em}
+.ch-intro{color:var(--muted);margin:0}
+h3{font-size:18px;margin:32px 0 10px}
+h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:24px 0 8px}
+p{margin:0 0 12px}
+ul,ol{padding-left:22px;margin:0 0 12px} li{margin:3px 0}
+code{font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code-bg);padding:1px 5px;border-radius:5px}
+pre{position:relative;background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;padding:0;font-size:12.5px;white-space:pre}
+pre.prompt{background:var(--prompt-bg);border-color:var(--prompt-border);padding-top:34px}
+pre.prompt code{white-space:pre-wrap}
+pre.prompt::before{content:"PROMPT";position:absolute;top:10px;left:16px;font:600 10.5px/1 -apple-system,sans-serif;letter-spacing:.08em;color:var(--accent)}
+.copy{position:absolute;top:8px;right:8px;font:500 11.5px/1 -apple-system,sans-serif;padding:5px 9px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer}
+.copy:hover{color:var(--text)}
+table{border-collapse:collapse;width:100%;margin:0 0 16px;font-size:13.5px;display:block;overflow-x:auto}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;background:var(--sunken)}
+thead th:empty{display:none}
+
+/* recipe cards */
+.recipe{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 28px 12px;margin-bottom:24px;box-shadow:var(--shadow)}
+.recipe header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.recipe header h3{margin:0;font-size:20px}
+.badge{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 8px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:12px;white-space:nowrap}
+.meta{display:grid;grid-template-columns:1fr;margin:0 0 20px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.meta-row{display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border)}
+.meta-row:last-child{border-bottom:0}
+.meta dt{background:var(--sunken);padding:8px 12px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.meta dd{margin:0;padding:8px 12px;font-size:13.5px}
+.rpill{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--accent-soft);font-weight:700;font-size:12px}
+.rpill:hover{text-decoration:none;background:var(--accent);color:#fff}
+.totop{position:fixed;right:20px;bottom:20px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:18px;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.show{opacity:1;pointer-events:auto}
+.hidden-by-search{display:none!important}
+
+/* mobile */
+.menu-btn{display:none}
+@media (max-width:900px){
+  .layout{display:block}
+  aside{position:fixed;inset:0 auto 0 0;width:84%;max-width:320px;background:var(--bg);z-index:20;transform:translateX(-100%);transition:transform .2s;box-shadow:var(--shadow)}
+  aside.open{transform:none}
+  main{padding:64px 16px 100px}
+  .menu-btn{display:block;position:fixed;top:12px;left:12px;z-index:21;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:600 13px -apple-system,sans-serif}
+  .recipe{padding:18px 16px 8px}
+  .meta-row{grid-template-columns:1fr}
+  .hero h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn">☰ Contents</button>
+<div class="layout">
+  <aside id="sidebar">
+    <p class="brand">Design System Playbook</p>
+    <p class="brand-sub">Design team · updated Oct 25, 2026 · 7 repo skills</p>
+    <input class="search" id="search" type="search" placeholder="Filter sections…">
+    <nav><ul id="navList"><li><a class="nav-ch" href="#overview"><span>1</span>Overview</a><ul><li><a href="#the-loop">The loop</a></li><li><a href="#one-source-of-truth-per-thing">One source of truth per thing</a></li><li><a href="#who-s-who">Who&#x27;s who</a></li><li><a href="#where-each-kind-of-work-happens">Where each kind of work happens</a></li></ul></li><li><a class="nav-ch" href="#setup"><span>2</span>One-time setup</a><ul><li><a href="#accounts-and-tools">Accounts and tools</a></li><li><a href="#connectors-mcp">Connectors (MCP)</a></li><li><a href="#skills">Skills</a></li><li><a href="#repo-setup-checklist">Repo setup checklist</a></li><li><a href="#figma-file-structure-what-claude-expects">Figma file structure (what Claude expects)</a></li></ul></li><li><a class="nav-ch" href="#tokens"><span>3</span>Tokens</a><ul><li><a href="#recipe-A">A · Create the foundations (first time)</a></li><li><a href="#recipe-B">B · Change, add or rename a token</a></li></ul></li><li><a class="nav-ch" href="#components"><span>4</span>Components</a><ul><li><a href="#recipe-C">C · Create a new component</a></li><li><a href="#recipe-D">D · Add a variant or prop to an existing component</a></li><li><a href="#recipe-I">I · Push code components back into Figma (code → canvas)</a></li></ul></li><li><a class="nav-ch" href="#review"><span>5</span>Review & QA</a><ul><li><a href="#recipe-E">E · Design review of a component PR (the first review)</a></li><li><a href="#recipe-F">F · Design QA: how well does the UI match Figma?</a></li></ul></li><li><a class="nav-ch" href="#delivery"><span>6</span>Handoff & build</a><ul><li><a href="#recipe-G">G · Hand off a feature to engineering</a></li><li><a href="#recipe-H">H · Engineer (or designer) builds a feature with the DS</a></li></ul></li><li><a class="nav-ch" href="#maintain"><span>7</span>Release & maintain</a><ul><li><a href="#recipe-J">J · Release a new version</a></li><li><a href="#recipe-K">K · Monthly health check: is the agent really using our DS?</a></li></ul></li><li><a class="nav-ch" href="#cheatsheet"><span>8</span>Cheat sheet</a><ul><li><a href="#which-recipe">Which recipe?</a></li><li><a href="#commands">Commands</a></li><li><a href="#semver-in-one-line">Semver in one line</a></li><li><a href="#golden-rules">Golden rules</a></li><li><a href="#skills-index">Skills index</a></li></ul></li></ul></nav>
+  </aside>
+  <main>
+    <div class="hero">
+      <h1>Design System Playbook</h1>
+      <p>How we create, maintain, scale and apply the design system with Claude. Start with <a href="#overview">Overview</a> and <a href="#setup">Setup</a>, then jump to the recipe for the situation you're in.</p>
+      <div class="legend"><span>✅ skill in the repo</span><span>🧩 skill from an installed plugin</span></div>
+      <p class="qtitle">Jump to a recipe</p>
+      <div class="qgrid"><a class="qcard" href="#recipe-A"><span class="badge">A</span>Create the foundations (first time)</a><a class="qcard" href="#recipe-B"><span class="badge">B</span>Change, add or rename a token</a><a class="qcard" href="#recipe-C"><span class="badge">C</span>Create a new component</a><a class="qcard" href="#recipe-D"><span class="badge">D</span>Add a variant or prop to an existing component</a><a class="qcard" href="#recipe-E"><span class="badge">E</span>Design review of a component PR (the first review)</a><a class="qcard" href="#recipe-F"><span class="badge">F</span>Design QA: how well does the UI match Figma?</a><a class="qcard" href="#recipe-G"><span class="badge">G</span>Hand off a feature to engineering</a><a class="qcard" href="#recipe-H"><span class="badge">H</span>Engineer (or designer) builds a feature with the DS</a><a class="qcard" href="#recipe-I"><span class="badge">I</span>Push code components back into Figma (code → canvas)</a><a class="qcard" href="#recipe-J"><span class="badge">J</span>Release a new version</a><a class="qcard" href="#recipe-K"><span class="badge">K</span>Monthly health check: is the agent really using our DS?</a></div>
+    </div>
+    <section class="chapter" id="overview"><div class="ch-head"><span class="ch-num">Chapter 1</span><h2>Overview</h2><p class="ch-intro">The loop, sources of truth, roles and where work happens.</p></div><h3 id="the-loop">The loop</h3>
+<pre><code> ① Foundations ─▶ ② Design in Figma ─▶ ③ Componentize ─▶ ④ Document
+   (tokens)          (screens use         (Figma → code)     (Storybook)
+                      variables only)                              │
+                                                                   ▼
+ ⑧ Measure ◀─── ⑦ Build product ◀─── ⑥ Release ◀─── ⑤ Review (PR)
+   (evals, drift)   (engineers + agents)  (versioned npm)   (design + eng)
+</code></pre>
+<h3 id="one-source-of-truth-per-thing">One source of truth per thing</h3>
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>Lives in</th>
+<th>Written by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Token values</td>
+<td>Figma Variables → <code>packages/tokens/src/*.json</code></td>
+<td>Generated (never hand-edit)</td>
+</tr>
+<tr>
+<td>Components + props</td>
+<td><code>packages/ui/src/components/*</code> → <code>catalog.json</code></td>
+<td>Claude writes, you review. Catalog is generated</td>
+</tr>
+<tr>
+<td>Visual docs</td>
+<td>Storybook (<code>apps/docs</code>)</td>
+<td>Generated from stories + tokens</td>
+</tr>
+<tr>
+<td>Brand intent / "why"</td>
+<td><code>DESIGN.md</code></td>
+<td>You (owner)</td>
+</tr>
+<tr>
+<td>Agent instructions</td>
+<td><code>AGENTS.md</code> (index only, &lt;150 lines)</td>
+<td>You</td>
+</tr>
+<tr>
+<td>Procedures</td>
+<td><code>.claude/skills/*/SKILL.md</code></td>
+<td>You + Claude</td>
+</tr>
+</tbody>
+</table>
+<h3 id="who-s-who">Who's who</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Owns</th>
+<th>Approves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DS owner</strong> (you / design team)</td>
+<td>Tokens, components, DESIGN.md, AGENTS.md, releases</td>
+<td>Every PR (CODEOWNERS)</td>
+</tr>
+<tr>
+<td><strong>Product designers</strong></td>
+<td>Feature screens using the DS, proposals</td>
+<td>Visual changes (Chromatic)</td>
+</tr>
+<tr>
+<td><strong>Frontend engineers</strong></td>
+<td>Code quality, adoption in product</td>
+<td>Code on <code>packages/ui/src</code></td>
+</tr>
+<tr>
+<td><strong>Claude</strong></td>
+<td>Repetitive work: sync, build, document, audit</td>
+<td>Nothing (always proposes via PR)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-each-kind-of-work-happens">Where each kind of work happens</h3>
+<table>
+<thead>
+<tr>
+<th>Work</th>
+<th>Best place</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Talking to Figma (read variables, frames, screenshots, write to canvas)</td>
+<td><strong>Claude Cowork</strong> or <strong>Claude Code</strong> with the Figma connector</td>
+<td>Both can use the Figma MCP</td>
+</tr>
+<tr>
+<td>Writing code in the repo, git, running Storybook</td>
+<td><strong>Claude Code</strong> in the repo folder (terminal / desktop app)</td>
+<td>Has the repo, terminal, <code>.claude/skills</code> auto-loaded</td>
+</tr>
+<tr>
+<td>Reviewing visuals</td>
+<td><strong>Chromatic / Storybook preview link</strong> in the browser</td>
+<td>No code reading needed</td>
+</tr>
+<tr>
+<td>Discussion, proposals, approvals</td>
+<td><strong>GitHub</strong> (issues, PRs, Discussions)</td>
+<td>Shared history, ownership rules</td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter" id="setup"><div class="ch-head"><span class="ch-num">Chapter 2</span><h2>One-time setup</h2><p class="ch-intro">Tools, connectors, skills, repo and Figma structure. Do once, ~1–2 hours.</p></div><p>Do this once. ~1–2 hours.</p>
+<h3 id="accounts-and-tools">Accounts and tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Why</th>
+<th>Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node 20+ &amp; pnpm</strong></td>
+<td>Run the repo</td>
+<td>Install Node, then <code>npm i -g pnpm</code></td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Shared repo, reviews, releases</td>
+<td>Org + repo <code>design-system</code>. Teams <code>design-system</code> and <code>frontend-leads</code></td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>Repo work</td>
+<td>Install, then run <code>claude</code> inside the repo folder</td>
+</tr>
+<tr>
+<td><strong>Claude Cowork</strong> (desktop)</td>
+<td>Figma-side work, docs, reviews</td>
+<td>Connect the repo folder with "Add folder"</td>
+</tr>
+<tr>
+<td><strong>Figma</strong></td>
+<td>Source of design</td>
+<td>A Dev or Full seat makes the MCP limits comfortable</td>
+</tr>
+<tr>
+<td><strong>Chromatic</strong></td>
+<td>Storybook previews per PR + visual approvals</td>
+<td>chromatic.com → sign in with GitHub → link the repo → copy the project token</td>
+</tr>
+</tbody>
+</table>
+<h3 id="connectors-mcp">Connectors (MCP)</h3>
+<p><strong>Figma connector</strong> (required)</p>
+<ul>
+<li><em>Cowork / claude.ai:</em> Settings → Connectors → <strong>Figma</strong> → Connect → authorize your Figma account.</li>
+<li><em>Claude Code:</em> <code>claude mcp add --transport http figma https://mcp.figma.com/mcp</code>, then type <code>/mcp</code> in Claude Code and authenticate.</li>
+<li>Test it: <em>"Using Figma, list the variable collections in <file URL>."</em></li>
+</ul>
+<p><strong>GitHub</strong> (recommended)</p>
+<ul>
+<li><em>Claude Code:</em> install the GitHub CLI and run <code>gh auth login</code>. Claude uses <code>gh</code> for branches, PRs and issues.</li>
+<li><em>Cowork / claude.ai:</em> Settings → Connectors → <strong>GitHub</strong>, so Claude can read issues and PRs while you're in Cowork.</li>
+</ul>
+<p><strong>Optional, later</strong></p>
+<ul>
+<li><strong>Storybook MCP addon</strong>: lets agents query components straight from Storybook. Check that it supports your Storybook version first.</li>
+<li><strong>Notion / Slack</strong>: announcing releases and breaking changes.</li>
+</ul>
+<h3 id="skills">Skills</h3>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Type</th>
+<th>How to make it available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ds-tokens-sync</code>, <code>ds-component-from-figma</code>, <code>ds-build-screen</code>, <code>ds-audit</code>, <code>ds-design-qa</code>, <code>ds-drift-check</code>, <code>ds-handoff</code></td>
+<td>✅ repo</td>
+<td><strong>Claude Code</strong> loads <code>.claude/skills/</code> automatically inside the repo. In <strong>Cowork</strong>, connect the repo folder and say <em>"follow .claude/skills/<name>/SKILL.md"</em>, or upload the skill folder as a personal skill (Settings → Capabilities → Skills)</td>
+</tr>
+<tr>
+<td><code>figma-use</code>, <code>figma-generate-library</code>, <code>figma-generate-design</code>, <code>figma-code-connect</code>, <code>figma-design-to-code</code></td>
+<td>🧩 Figma plugin</td>
+<td>Install the Figma plugin for Claude. Already enabled in your Cowork</td>
+</tr>
+<tr>
+<td><code>design:design-critique</code>, <code>design:accessibility-review</code>, <code>design:design-handoff</code>, <code>design:design-system</code></td>
+<td>🧩 Design plugin</td>
+<td>Already enabled in your Cowork</td>
+</tr>
+<tr>
+<td>Helper scripts for the QA/drift skills</td>
+<td>✅ repo</td>
+<td><code>pnpm qa:snapshot</code> (needs <code>npx playwright install chromium</code> once) · <code>pnpm catalog:summary</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="repo-setup-checklist">Repo setup checklist</h3>
+<pre><code class="language-bash"># 1. Unzip, then:
+cd design-system
+pnpm install
+pnpm dev                     # Storybook opens at localhost:6006 ✔
+
+# 2. Personalize
+#    find/replace &quot;@yourco&quot; → your GitHub org (done here: @tawan-design)
+
+# 3. Push
+git init &amp;&amp; git add -A &amp;&amp; git commit -m &quot;chore: bootstrap design system&quot;
+gh repo create &lt;org&gt;/design-system --private --source=. --push
+</code></pre>
+<p>On GitHub:</p>
+<ul>
+<li>☐ Settings → Branches → protect <code>main</code>: require PR, require <strong>Code Owners</strong> review, require status checks (CI)</li>
+<li>☐ Settings → Secrets → <code>CHROMATIC_PROJECT_TOKEN</code></li>
+<li>☐ Settings → Features → enable <strong>Discussions</strong> (category "RFC")</li>
+<li>☐ Teams <code>design-system</code> and <code>frontend-leads</code> exist (or edit <code>.github/CODEOWNERS</code>)</li>
+</ul>
+<h3 id="figma-file-structure-what-claude-expects">Figma file structure (what Claude expects)</h3>
+<pre><code>📁 Design System (Figma file)
+ ├─ 📄 Foundations   ← variable collections live here
+ │    ├─ Collection &quot;Primitives&quot;  (color/blue/600, space/16, radius/8 …)
+ │    └─ Collection &quot;Semantic&quot;    modes: Light, Dark  (bg/surface, text/muted …) → aliases to Primitives
+ ├─ 📄 Components    ← one component set per component, variant properties named like props
+ │    └─ Button  (Variant = Primary|Secondary|Ghost|Danger, Size = Small|Medium|Large, State = Default|Disabled)
+ └─ 📄 Patterns      ← proven compositions (review dialog, empty state …)
+</code></pre>
+<p>Naming rules that make the agent accurate:</p>
+<ul>
+<li>Variable names use <code>/</code>: <code>bg/surface</code>, <code>space/16</code>. They become <code>color.bg.surface</code> → <code>--ds-color-bg-surface</code> → <code>bg-surface</code>.</li>
+<li>Component property names match code props: <code>Variant</code> → <code>variant</code>, <code>Size</code> → <code>size</code>.</li>
+<li><strong>Every</strong> fill, stroke, gap, padding and radius is bound to a variable. No detached values.</li>
+</ul></section>
+<section class="chapter" id="tokens"><div class="ch-head"><span class="ch-num">Chapter 3</span><h2>Tokens</h2><p class="ch-intro">Creating and changing foundations.</p></div><article class="recipe" id="recipe-A"><header><span class="badge"><a class="rlink" href="#recipe-A">Recipe A</a></span><h3>Create the foundations (first time)</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Brand direction → working tokens in Figma and code, light + dark</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner (+ brand/marketing input)</dd></div><div class="meta-row"><dt>Where</dt><dd>Cowork (Figma side) → Claude Code (repo side)</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Brand guidelines or moodboard (PDF/images) · existing product screenshots · Figma DS file URL</dd></div><div class="meta-row"><dt>Skills</dt><dd>🧩 <code>figma-use</code> + <code>figma-generate-library</code> (create variables in Figma) · ✅ <code>ds-tokens-sync</code> (Figma → repo) · 🧩 <code>design:accessibility-review</code> (contrast)</dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma · GitHub</dd></div></dl>
+
+<h4>Steps</h4>
+<ol>
+<li><strong>Decide the scales</strong> with Claude: color ramps, spacing (2–64), radius (8, 12, full), type sizes.</li>
+<li><strong>Create variables in Figma.</strong> Claude writes the <code>Primitives</code> and <code>Semantic</code> (Light/Dark) collections into your file.</li>
+<li><strong>Check contrast</strong> for every text/background pair in both modes.</li>
+<li><strong>Sync to the repo.</strong> Claude exports the variables to <code>tokens/*.json</code>, rebuilds, and opens a PR.</li>
+<li><strong>Review</strong> Storybook → Foundations (toggle Dark). Merge.</li>
+</ol>
+<p><strong>Sample prompts</strong></p>
+<p><em>Step 1–2 (Cowork):</em></p>
+<pre><code>I'm setting up foundations for our design system. Attached: brand guidelines + 3 product screenshots.
+Figma file: &lt;URL&gt;
+
+1. Propose primitives: color ramps (neutral, brand, red, green, 50–950), spacing 2–64,
+   radius 8/12/full, type sizes 12–32.
+2. Propose semantic tokens with names like bg/surface, bg/brand, text/default, text/muted,
+   border/default, border/focus, for Light and Dark.
+3. Show me a table first. After I approve, create them as Figma Variables on the
+   &quot;Foundations&quot; page: collection &quot;Primitives&quot;, and collection &quot;Semantic&quot; with modes Light/Dark
+   aliasing primitives. Use figma-use and figma-generate-library.
+</code></pre>
+<p><em>Step 3:</em></p>
+<pre><code>Run an accessibility review on every text/* on bg/* pair in both modes. Flag anything below
+WCAG AA (4.5:1 body, 3:1 large text/UI) and suggest the closest passing primitive.
+</code></pre>
+<p><em>Step 4 (Claude Code, in the repo):</em></p>
+<pre><code>Use ds-tokens-sync. Figma file: &lt;URL&gt;. Replace the sample tokens with ours, update the @theme
+block in packages/ui/src/styles.css for any new semantic tokens, run pnpm check, add a changeset,
+and open a PR labelled &quot;tokens&quot;.
+</code></pre>
+<p><strong>Output:</strong> <code>tokens/*.json</code>, updated <code>styles.css</code>, Foundations page in Storybook, tokens PR
+<strong>Done when:</strong> ☐ both modes pass AA ☐ no raw values in Figma components ☐ Storybook Foundations matches Figma ☐ PR merged</p></article><article class="recipe" id="recipe-B"><header><span class="badge"><a class="rlink" href="#recipe-B">Recipe B</a></span><h3>Change, add or rename a token</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Update tokens safely, without silently breaking products</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner (anyone can request via the "Token change" issue)</dd></div><div class="meta-row"><dt>Where</dt><dd>Figma → Claude Code</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>The issue link · Figma file URL · what changed</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-tokens-sync</code></dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma · GitHub</dd></div></dl>
+
+<h4>Steps</h4>
+<ol>
+<li>Edit the variable in Figma.</li>
+<li>Claude syncs and <strong>classifies</strong> each change: added / value changed / renamed-removed (= breaking).</li>
+<li>For breaking changes, Claude lists every file that uses the old token and writes a migration note. Use a <code>major</code> changeset.</li>
+<li>Designer approves in Chromatic (every component that changed visually shows up there).</li>
+</ol>
+<p><strong>Sample prompt</strong></p>
+<pre class="prompt"><code>Use ds-tokens-sync. I renamed bg/subtle → bg/sunken and changed border/default in Dark mode.
+Figma: &lt;URL&gt;. Classify every change, list affected files for anything breaking, update usages,
+write a migration note in the PR description, and use a major changeset if anything breaks.
+Closes #&lt;issue&gt;.
+</code></pre>
+<p><strong>Output:</strong> tokens PR with a change table + migration note
+<strong>Done when:</strong> ☐ classification table in PR ☐ Chromatic diffs approved ☐ correct semver bump</p></article></section>
+<section class="chapter" id="components"><div class="ch-head"><span class="ch-num">Chapter 4</span><h2>Components</h2><p class="ch-intro">Building, extending and syncing components between Figma and code.</p></div><article class="recipe" id="recipe-C"><header><span class="badge"><a class="rlink" href="#recipe-C">Recipe C</a></span><h3>Create a new component</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>A pattern proven in real screens → a DS component in Figma and code, 1:1</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner (designer builds in Figma, Claude builds code) · 1 engineer reviews</dd></div><div class="meta-row"><dt>Where</dt><dd>Figma → Claude Code</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd><strong>Figma URL of the component set</strong> (right-click → Copy link to selection) · the GitHub issue · 1–2 real screens where it's used · any behavior notes (keyboard, empty/loading/error)</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-component-from-figma</code> · 🧩 <code>figma-code-connect</code> · 🧩 <code>design:accessibility-review</code></dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma · GitHub</dd></div></dl>
+
+<h4>Before you start (in Figma)</h4>
+<ul>
+<li>☐ Component set exists with variant properties named like props (<code>Variant</code>, <code>Size</code>, <code>State</code>)</li>
+<li>☐ All states drawn: default, hover, focus, disabled, error, loading (where relevant)</li>
+<li>☐ Every value bound to a variable (run <code>design:design-system</code> to audit it if unsure)</li>
+<li>☐ Used in ≥2 real screens (otherwise it stays a local pattern)</li>
+</ul>
+<h4>Steps</h4>
+<ol>
+<li>Claude checks <code>catalog.json</code>. If something similar exists, it proposes a variant instead (→ <a class="rlink" href="#recipe-D">Recipe D</a>).</li>
+<li>Claude reads the Figma node: properties → props, variables → token classes. <strong>It stops and reports any unbound value instead of guessing.</strong></li>
+<li>Builds <code>&lt;Name&gt;.tsx</code> (cva variants, Radix if interactive), <code>&lt;Name&gt;.stories.tsx</code> (every variant and state + Figma link), <code>&lt;Name&gt;.figma.tsx</code> (Code Connect).</li>
+<li>Exports it, regenerates <code>catalog.json</code>, runs <code>pnpm check</code>, adds a <code>minor</code> changeset, opens a PR.</li>
+<li>→ <a class="rlink" href="#recipe-E">Recipe E</a> (review).</li>
+</ol>
+<p><strong>Sample prompt (Claude Code, in the repo)</strong></p>
+<pre class="prompt"><code>Use ds-component-from-figma to create a &lt;Select&gt; component.
+Figma component set: &lt;URL&gt;
+Issue: #&lt;n&gt;
+Used in: &lt;URL of screen 1&gt;, &lt;URL of screen 2&gt;
+
+Behavior notes:
+- Built on Radix Select, keyboard navigable, typeahead
+- Props: label, hint, error, placeholder, options, disabled
+- States in Figma: Default, Open, Focus, Error, Disabled
+
+Map Figma properties 1:1 to props. If any fill/spacing/radius isn't bound to a variable,
+stop and list them, don't guess. Write stories for every variant and state with the Figma link,
+add Code Connect, regenerate the catalog, run pnpm check, add a minor changeset and open a PR
+using the template.
+</code></pre>
+<p><strong>Output:</strong> component + story + Code Connect + catalog entry + PR with preview link
+<strong>Done when:</strong> ☐ every Figma variant has a story ☐ <code>pnpm check</code> green ☐ a11y panel has no violations ☐ Code Connect published (<code>npx figma connect publish</code>)</p></article><article class="recipe" id="recipe-D"><header><span class="badge"><a class="rlink" href="#recipe-D">Recipe D</a></span><h3>Add a variant or prop to an existing component</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Extend without breaking existing usage</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Figma URL of the updated component set · the reason (issue)</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-component-from-figma</code> (it handles updates too)</dd></div></dl>
+
+<p><strong>Sample prompt</strong></p>
+<pre class="prompt"><code>Use ds-component-from-figma to add a &quot;loading&quot; state and an &quot;icon&quot; slot to Button.
+Updated Figma component set: &lt;URL&gt;. Keep all existing props backward compatible.
+Update stories, Code Connect and catalog, minor changeset, open a PR.
+</code></pre>
+<p><strong>Done when:</strong> ☐ no existing story changed visually (Chromatic shows only new stories) ☐ minor bump</p></article><article class="recipe" id="recipe-I"><header><span class="badge"><a class="rlink" href="#recipe-I">Recipe I</a></span><h3>Push code components back into Figma (code → canvas)</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Keep the Figma library in sync when a component was born or changed in code</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code or Cowork with the repo + Figma</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Component file path / story link · target Figma file URL</dd></div><div class="meta-row"><dt>Skills</dt><dd>🧩 <code>figma-generate-library</code> · 🧩 <code>figma-use</code> · 🧩 <code>figma-code-connect</code></dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
+
+<p><strong>Sample prompt</strong></p>
+<pre class="prompt"><code>Use figma-generate-library. Create (or update) the Figma component set for Badge from
+packages/ui/src/components/Badge in &lt;Figma URL&gt;, page &quot;Components&quot;.
+Variant property &quot;Tone&quot; = neutral|brand|success|danger. Bind every fill/padding/radius to our
+existing variables. No raw values. Then add the Code Connect mapping.
+</code></pre></article></section>
+<section class="chapter" id="review"><div class="ch-head"><span class="ch-num">Chapter 5</span><h2>Review & QA</h2><p class="ch-intro">Approving changes and measuring how closely the UI matches Figma.</p></div><article class="recipe" id="recipe-E"><header><span class="badge"><a class="rlink" href="#recipe-E">Recipe E</a></span><h3>Design review of a component PR (the first review)</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Approve or request changes before anything reaches products</dd></div><div class="meta-row"><dt>Who</dt><dd>Designers (visual) · Engineer (code/API) · DS owner (final approval)</dd></div><div class="meta-row"><dt>Where</dt><dd>GitHub PR → Chromatic / Storybook preview link → Cowork for an AI review</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>PR link · Storybook preview link · Figma URL</dd></div><div class="meta-row"><dt>Skills</dt><dd>🧩 <code>design:design-critique</code> · 🧩 <code>design:accessibility-review</code> · ✅ <code>ds-design-qa</code> (<a class="rlink" href="#recipe-F">Recipe F</a>)</dd></div><div class="meta-row"><dt>Connectors</dt><dd>GitHub · Figma</dd></div></dl>
+
+<h4>Steps</h4>
+<ol>
+<li><strong>Designers</strong> open the preview link in the PR. For each story: compare with the embedded Figma frame, play with Controls, switch Theme to Dark, tab through with the keyboard.</li>
+<li><strong>Claude</strong> produces a critique + accessibility report (prompt below). Paste it as a PR comment.</li>
+<li><strong>Engineer</strong> reviews prop naming, composition and Radix usage.</li>
+<li><strong>DS owner</strong> approves in Chromatic + GitHub, then squash-merges.</li>
+</ol>
+<p><strong>Sample prompt (Cowork)</strong></p>
+<pre class="prompt"><code>Review PR &lt;link&gt;. Storybook preview: &lt;link&gt;. Figma: &lt;URL&gt;.
+1. design-critique: hierarchy, consistency with our other components, states coverage.
+2. accessibility-review: contrast in both themes, focus visibility, keyboard, ARIA, target size ≥40px.
+3. Compare the props in the PR against the Figma component properties: list anything missing or renamed.
+Give me a short comment I can paste into the PR: ✅ approve / 🔁 request changes, with a numbered list.
+</code></pre>
+<h4>Review checklist (paste into PR)</h4>
+<ul>
+<li>☐ Matches Figma in every variant/state (light + dark)</li>
+<li>☐ Prop names = Figma property names</li>
+<li>☐ Keyboard + focus ring work, screen reader label makes sense</li>
+<li>☐ Only token classes (<code>pnpm check</code> green)</li>
+<li>☐ Story exists for each state</li>
+</ul></article><article class="recipe" id="recipe-F"><header><span class="badge"><a class="rlink" href="#recipe-F">Recipe F</a></span><h3>Design QA: how well does the UI match Figma?</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>A measurable match score between Figma and the built UI (component or full screen)</dd></div><div class="meta-row"><dt>Who</dt><dd>Designer (owner of the screen) · Claude does the comparison</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code (needs Playwright to screenshot) or Cowork with the repo connected</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Figma frame URL · Storybook story URL or playground/product URL (+ viewport size)</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-design-qa</code> (+ script <code>pnpm qa:snapshot</code>) · 🧩 <code>figma-design-to-code</code> (reads design context)</dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
+
+<p><strong>What gets compared</strong>
+| Check | Figma source | Code source | Weight |
+|---|---|---|---|
+| Components used | instances in the frame | imports / rendered components | 25% |
+| Variants &amp; props | instance properties | props passed | 20% |
+| Tokens (color, space, radius, type) | <code>get_variable_defs</code> | classes / computed styles | 30% |
+| Layout &amp; spacing | auto-layout gaps/padding | computed box model | 15% |
+| Visual diff | <code>get_screenshot</code> | Playwright screenshot | 10% |</p>
+<h4>Before you start</h4>
+<ul>
+<li>☐ The built UI is running: <code>pnpm dev</code> (Storybook) or <code>pnpm playground</code></li>
+<li>☐ For a story, copy its <strong>iframe</strong> URL: open the story → "Open canvas in new tab" (<code>iframe.html?id=…</code>)</li>
+<li>☐ Playwright browser installed once: <code>npx playwright install chromium</code></li>
+</ul>
+<h4>Steps (what the skill does)</h4>
+<ol>
+<li><strong>Figma side:</strong> reads the frame with the Figma MCP (instances, variant properties, bound variables, auto-layout, screenshot) and flags detached/unbound layers.</li>
+<li><strong>Built side:</strong> runs <code>pnpm qa:snapshot &lt;url&gt; --name &lt;x&gt; --theme both</code>. It saves screenshots and, for every element, the DS component it belongs to (<code>data-ds</code>) and its computed styles <strong>translated back to token names</strong>, plus any hand-rolled controls and raw values.</li>
+<li><strong>Compares and scores</strong> with the weights above; the final score is the lowest theme score.</li>
+<li><strong>Writes</strong> <code>qa-output/&lt;name&gt;/report.md</code>: score, mismatch table (element · Figma · built · fix in Code / Figma / DS), design-side issues, screenshots.</li>
+</ol>
+<p><strong>Sample prompt (Claude Code, in the repo)</strong></p>
+<pre class="prompt"><code>Use ds-design-qa.
+Figma frame: &lt;URL with node-id&gt;
+Built UI: http://localhost:6006/iframe.html?id=pages-fintech-app--dashboard-page
+Viewport 1280x800, both themes. Name: dashboard.
+Report only, don't fix anything.
+</code></pre>
+<p><strong>Follow-up prompt</strong></p>
+<pre class="prompt"><code>Fix the &quot;Code&quot; mismatches from qa-output/dashboard/report.md, rerun ds-design-qa and show the new score.
+List the &quot;Figma&quot; ones so I can fix them in the design.
+</code></pre>
+<p><strong>Output:</strong> score + mismatch table + screenshots → issues or a fix PR
+<strong>Done when:</strong> ☐ score ≥ 90 ☐ every mismatch is either fixed or accepted with a reason</p></article></section>
+<section class="chapter" id="delivery"><div class="ch-head"><span class="ch-num">Chapter 6</span><h2>Handoff & build</h2><p class="ch-intro">Getting features from Figma into the product using the system.</p></div><article class="recipe" id="recipe-G"><header><span class="badge"><a class="rlink" href="#recipe-G">Recipe G</a></span><h3>Hand off a feature to engineering</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Engineers (and their agents) can build the feature using only the DS, with no guessing</dd></div><div class="meta-row"><dt>Who</dt><dd>Product designer → Frontend engineer</dd></div><div class="meta-row"><dt>Where</dt><dd>Cowork (spec) → GitHub issue in the <strong>product</strong> repo</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Figma flow URL (all screens + states) · PRD/ticket · edge cases you know</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-handoff</code> (builds on 🧩 <code>design:design-handoff</code>) · 🧩 <code>design:ux-copy</code> (optional)</dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma · GitHub (or Jira/Linear if that's where tickets live)</dd></div></dl>
+
+<h4>Steps</h4>
+<ol>
+<li>Make sure every element in the Figma flow is a DS instance (no detached layers).</li>
+<li>Claude writes the handoff spec <strong>in DS language</strong>: per screen, which components, which props, which <code>DESIGN.md</code> pattern applies.</li>
+<li>Claude flags <strong>DS-GAPs</strong>, i.e. things the system doesn't cover → "New component" issues in the DS repo (→ <a class="rlink" href="#recipe-C">Recipe C</a>).</li>
+<li>Post the spec on the product ticket. Engineers build with <a class="rlink" href="#recipe-H">Recipe H</a>.</li>
+</ol>
+<p><strong>Sample prompt (Cowork with the repo folder connected, or Claude Code)</strong></p>
+<pre class="prompt"><code>Use ds-handoff for the KYC flow.
+Figma flow: &lt;URL of the page/section with all screens&gt;
+PRD: attached (or &lt;link&gt;)
+Breakpoints: 375 / 1280. Save the spec as handoff/kyc.md.
+If you find detached layers, stop and list them first.
+Draft the DS-GAP issues but ask me before creating them.
+</code></pre>
+<p><strong>What you get:</strong> one section per screen (component + props table, layout as token classes, states, responsive, copy, accessibility, the DESIGN.md rule that applies), then DS-GAPs and open questions.</p>
+<p><strong>Output:</strong> handoff spec (per screen) + DS-GAP list → issues
+<strong>Done when:</strong> ☐ zero detached layers ☐ every element mapped to a catalog component or a DS-GAP ☐ edge states covered</p></article><article class="recipe" id="recipe-H"><header><span class="badge"><a class="rlink" href="#recipe-H">Recipe H</a></span><h3>Engineer (or designer) builds a feature with the DS</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Product code that uses the DS correctly the first time</dd></div><div class="meta-row"><dt>Who</dt><dd>Frontend engineer (or designer prototyping in the playground)</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code in the <strong>product</strong> repo (or <code>apps/playground</code> here)</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Handoff spec · Figma URL · the product repo with <code>@tawan-design/ui</code> installed</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-build-screen</code> · ✅ <code>ds-audit</code> · ✅ <code>ds-design-qa</code></dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
+
+<h4>One-time in each product repo</h4>
+<pre><code class="language-bash">pnpm add @tawan-design/ui                         # from GitHub Packages
+# app root: import &quot;@tawan-design/ui/styles.css&quot;;
+</code></pre>
+<p>Then add to that repo's <code>AGENTS.md</code> / <code>CLAUDE.md</code>:</p>
+<pre><code>@tawan-design/ui is installed. Before writing UI, read node_modules/@tawan-design/ui/catalog.json.
+Use its components before building anything new. Token classes only. Ask instead of guessing.
+</code></pre>
+<p>(Copy <code>ds-build-screen</code> into that repo's <code>.claude/skills/</code> too.)</p>
+<p><strong>Sample prompt (Claude Code)</strong></p>
+<pre class="prompt"><code>Use ds-build-screen to build the KYC upload screen. Figma: &lt;URL&gt;. Spec: &lt;link&gt;.
+Map each Figma instance to a catalog component. Mark anything missing with // DS-GAP.
+When done: run the checks, then run ds-audit on the new files and give me the score.
+</code></pre>
+<p><strong>Output:</strong> feature PR + <code>ds-audit</code> score in the description
+<strong>Done when:</strong> ☐ audit ≥ 85 ☐ zero hand-rolled lookalikes ☐ DS-GAPs reported as issues</p></article></section>
+<section class="chapter" id="maintain"><div class="ch-head"><span class="ch-num">Chapter 7</span><h2>Release & maintain</h2><p class="ch-intro">Shipping versions and checking that agents really use the system.</p></div><article class="recipe" id="recipe-J"><header><span class="badge"><a class="rlink" href="#recipe-J">Recipe J</a></span><h3>Release a new version</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Ship merged changes to products as a versioned package</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner</dd></div><div class="meta-row"><dt>Where</dt><dd>GitHub</dd></div><div class="meta-row"><dt>Skills</dt><dd>none (Changesets automates it) · optional: Claude writes the announcement</dd></div></dl>
+
+<h4>Steps</h4>
+<ol>
+<li>After merges, GitHub shows a PR <strong>"Release: version packages"</strong> with the version bump + CHANGELOG.</li>
+<li>Read it, then merge → the package is published to GitHub Packages.</li>
+<li>Announce (Slack/Notion): what's new, breaking changes, how to upgrade.</li>
+</ol>
+<p><strong>Sample prompt (announcement)</strong></p>
+<pre class="prompt"><code>Read CHANGELOG.md for @tawan-design/ui &lt;version&gt;. Write a short release note for designers and
+engineers: new components, changes, breaking changes with migration steps, link to Storybook.
+</code></pre></article><article class="recipe" id="recipe-K"><header><span class="badge"><a class="rlink" href="#recipe-K">Recipe K</a></span><h3>Monthly health check: is the agent really using our DS?</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Measure adoption, find the missing sentences in the docs, track the trend</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner (30–60 min/month)</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code in the DS repo</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd><code>evals/prompts/*</code> · last month's <code>evals/results.md</code> · Figma DS file URL</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-audit</code> · ✅ <code>ds-drift-check</code> (+ script <code>pnpm catalog:summary</code>)</dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
+
+<h4>Steps</h4>
+<ol>
+<li>Run each eval prompt in a <strong>fresh</strong> session (no memory of earlier fixes).</li>
+<li><code>ds-audit</code> each output → scores on 6 dimensions.</li>
+<li>Drift check: compare the Figma component list and properties with <code>catalog.json</code>.</li>
+<li>Fix the <strong>docs gaps</strong> (usually 1–2 sentences in <code>AGENTS.md</code>/<code>DESIGN.md</code>), rerun, log the result.</li>
+</ol>
+<p><strong>Sample prompts</strong></p>
+<pre class="prompt"><code>Run the monthly DS health check:
+1. For each prompt in evals/prompts, start a subagent with a fresh context in this repo, build
+   it into apps/playground/src/evals/, then run ds-audit on the output.
+2. Summarize: average score, hand-rolled %, invented props, raw values, and the top 3 &quot;Docs gaps&quot;.
+3. Append a row to evals/results.md. Don't commit the eval output.
+</code></pre>
+<pre><code>Use ds-drift-check. Figma DS file: &lt;URL&gt;.
+Save the report to evals/drift/&lt;today&gt;.md and draft issues for the High items (ask before creating).
+</code></pre>
+<p><strong>Output:</strong> score trend + docs fixes PR + drift list → issues</p></article></section>
+<section class="chapter" id="cheatsheet"><div class="ch-head"><span class="ch-num">Chapter 8</span><h2>Cheat sheet</h2><p class="ch-intro">Which recipe, commands, versioning and golden rules.</p></div><h3 id="which-recipe">Which recipe?</h3>
+<table>
+<thead>
+<tr>
+<th>I want to…</th>
+<th>Recipe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start the system from zero</td>
+<td><a class="rpill" href="#recipe-A">A</a></td>
+</tr>
+<tr>
+<td>Change a color / spacing value / rename a token</td>
+<td><a class="rpill" href="#recipe-B">B</a></td>
+</tr>
+<tr>
+<td>Make a new component</td>
+<td><a class="rpill" href="#recipe-C">C</a></td>
+</tr>
+<tr>
+<td>Add a variant or prop</td>
+<td><a class="rpill" href="#recipe-D">D</a></td>
+</tr>
+<tr>
+<td>Review someone's component PR</td>
+<td><a class="rpill" href="#recipe-E">E</a></td>
+</tr>
+<tr>
+<td>Check if the built UI matches Figma</td>
+<td><a class="rpill" href="#recipe-F">F</a></td>
+</tr>
+<tr>
+<td>Hand a feature to engineers</td>
+<td><a class="rpill" href="#recipe-G">G</a></td>
+</tr>
+<tr>
+<td>Build a feature with the DS</td>
+<td><a class="rpill" href="#recipe-H">H</a></td>
+</tr>
+<tr>
+<td>Get a code component into Figma</td>
+<td><a class="rpill" href="#recipe-I">I</a></td>
+</tr>
+<tr>
+<td>Ship a new version</td>
+<td><a class="rpill" href="#recipe-J">J</a></td>
+</tr>
+<tr>
+<td>Check whether agents actually use the DS</td>
+<td><a class="rpill" href="#recipe-K">K</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="commands">Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pnpm dev</code></td>
+<td>Builds tokens and opens Storybook (localhost:6006)</td>
+</tr>
+<tr>
+<td><code>pnpm playground</code></td>
+<td>Simulated product (localhost:5173)</td>
+</tr>
+<tr>
+<td><code>pnpm tokens</code></td>
+<td>Rebuilds CSS variables from token JSON</td>
+</tr>
+<tr>
+<td><code>pnpm check</code></td>
+<td>Typecheck + raw-value audit (the same as CI)</td>
+</tr>
+<tr>
+<td><code>pnpm --filter @tawan-design/ui catalog</code></td>
+<td>Regenerates <code>catalog.json</code></td>
+</tr>
+<tr>
+<td><code>pnpm changeset</code></td>
+<td>Describe your change (patch/minor/major)</td>
+</tr>
+<tr>
+<td><code>npx figma connect publish</code></td>
+<td>Publishes Code Connect snippets to Figma Dev Mode</td>
+</tr>
+<tr>
+<td><code>pnpm qa:snapshot &lt;url&gt; --name x --theme both</code></td>
+<td>Built-UI side of design QA (screenshots + tokens per element)</td>
+</tr>
+<tr>
+<td><code>pnpm catalog:summary</code></td>
+<td>Code side of a drift check (components, props, stories, Code Connect)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="semver-in-one-line">Semver in one line</h3>
+<p><code>patch</code> = fix · <code>minor</code> = new component/variant/token · <code>major</code> = rename or removal (needs a migration note)</p>
+<h3 id="golden-rules">Golden rules</h3>
+<ol>
+<li>Figma variables are the source of token values. Never hand-edit token JSON.</li>
+<li>A pattern becomes a component only after it works in ≥2 real screens.</li>
+<li>Figma property names = code prop names.</li>
+<li>Nothing reaches <code>main</code> without a PR and design approval.</li>
+<li>When an agent gets it wrong, fix the <strong>docs</strong> (one specific sentence), not just the code.</li>
+<li>Keep <code>AGENTS.md</code> an index. If you're typing values into it, they belong somewhere else.</li>
+</ol>
+<h3 id="skills-index">Skills index</h3>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Use it for</th>
+<th>Recipe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ds-tokens-sync</code></td>
+<td>Figma Variables → token JSON, classify breaking changes</td>
+<td>A, B</td>
+</tr>
+<tr>
+<td><code>ds-component-from-figma</code></td>
+<td>Figma component set → code component + story + Code Connect</td>
+<td>C, D</td>
+</tr>
+<tr>
+<td><code>ds-build-screen</code></td>
+<td>Building any UI with the system</td>
+<td><a class="rpill" href="#recipe-H">H</a></td>
+</tr>
+<tr>
+<td><code>ds-audit</code></td>
+<td>Score how well code uses the system (6 dimensions)</td>
+<td>H, K</td>
+</tr>
+<tr>
+<td><code>ds-design-qa</code></td>
+<td>Figma frame vs built UI, match score /100</td>
+<td>E, F, H</td>
+</tr>
+<tr>
+<td><code>ds-drift-check</code></td>
+<td>Figma library vs code library</td>
+<td><a class="rpill" href="#recipe-K">K</a></td>
+</tr>
+<tr>
+<td><code>ds-handoff</code></td>
+<td>Feature handoff spec in DS terms + DS-GAP issues</td>
+<td><a class="rpill" href="#recipe-G">G</a></td>
+</tr>
+</tbody>
+</table></section>
+  </main>
+</div>
+<button class="totop" id="toTop" aria-label="Back to top">↑</button>
+<script>
+// copy buttons
+document.querySelectorAll("pre").forEach(pre=>{
+  const b=document.createElement("button");b.className="copy";b.textContent="Copy";
+  b.onclick=()=>{navigator.clipboard.writeText(pre.innerText.replace(/^Copy\n?/,"").trim()).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1200)}).catch(()=>{b.textContent="Select & copy"})};
+  pre.appendChild(b);
+});
+// scrollspy
+const links=[...document.querySelectorAll("nav a")];
+const byId=new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
+const targets=[...byId.keys()].map(id=>document.getElementById(id)).filter(Boolean);
+function spy(){
+  let cur=null;
+  for(const t of targets){ if(t.getBoundingClientRect().top<120) cur=t; }
+  links.forEach(a=>a.classList.remove("active"));
+  if(cur){
+    const a=byId.get(cur.id); a&&a.classList.add("active");
+    const ch=cur.closest(".chapter"); if(ch){const c=byId.get(ch.id); c&&c.classList.add("active");}
+  }
+  document.getElementById("toTop").classList.toggle("show",scrollY>600);
+}
+addEventListener("scroll",spy,{passive:true}); spy();
+document.getElementById("toTop").onclick=()=>scrollTo({top:0});
+// mobile menu
+const sb=document.getElementById("sidebar");
+document.getElementById("menuBtn").onclick=()=>sb.classList.toggle("open");
+links.forEach(a=>a.addEventListener("click",()=>sb.classList.remove("open")));
+// nav filter
+document.getElementById("search").addEventListener("input",e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll("#navList>li").forEach(li=>{
+    let any=false;
+    li.querySelectorAll("ul li").forEach(s=>{const m=!q||s.textContent.toLowerCase().includes(q);s.classList.toggle("hidden-by-search",!m);any=any||m;});
+    const chMatch=!q||li.querySelector(".nav-ch").textContent.toLowerCase().includes(q);
+    li.classList.toggle("hidden-by-search",!(any||chMatch));
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - name: Typecheck + raw-value audit
+        run: pnpm check
+      - name: Build everything (tokens, ui, Storybook, playground)
+        run: pnpm build
+      - name: Catalog is up to date
+        run: git diff --exit-code packages/ui/catalog.json || (echo "Run: pnpm --filter @tawan-design/ui catalog" && exit 1)

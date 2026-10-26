@@ -1,0 +1,4 @@
+@import "@tawan-design/ui/styles.css";
+/* Also scan the docs + playground sources for classes used in pages/foundations */
+@source "../src";
+@source "../../playground/src";

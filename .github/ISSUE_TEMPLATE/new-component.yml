@@ -1,0 +1,24 @@
+name: New component / variant proposal
+description: Propose a component or variant for the design system
+labels: ["proposal", "needs-design-review"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: Which screen or flow needs it? Why can't existing components do it?
+    validations: { required: true }
+  - type: input
+    id: figma
+    attributes:
+      label: Figma link
+  - type: textarea
+    id: usage
+    attributes:
+      label: Where would it be used?
+      description: List at least two places. One-offs usually stay in the product, not the DS.
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who will build it?
+      options: ["Design system team", "I'll open a PR", "Not sure"]

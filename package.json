@@ -1,0 +1,23 @@
+{
+  "name": "design-system",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "tokens": "pnpm --filter @tawan-design/tokens build",
+    "dev": "pnpm tokens && pnpm --filter docs storybook",
+    "playground": "pnpm tokens && pnpm --filter playground dev",
+    "build": "pnpm tokens && pnpm --filter @tawan-design/ui build && pnpm --filter docs build && pnpm --filter playground build",
+    "typecheck": "pnpm tokens && pnpm -r typecheck",
+    "audit:tokens": "node scripts/check-raw-values.mjs",
+    "check": "pnpm typecheck && pnpm audit:tokens",
+    "changeset": "changeset",
+    "release": "pnpm build && changeset publish",
+    "qa:snapshot": "node scripts/qa-snapshot.mjs",
+    "catalog:summary": "node scripts/catalog-summary.mjs"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.11",
+    "typescript": "~5.6.3",
+    "playwright": "^1.49.1"
+  }
+}

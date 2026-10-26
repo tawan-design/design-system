@@ -1,0 +1,1 @@
+Build a KYC identity verification screen: user picks document type (passport / national ID), uploads front and back photos, sees upload status for each, and submits. Show an error state when a photo is blurry.

@@ -1,0 +1,75 @@
+{
+  "$description": "Raw palette and scales. Exported from Figma Variables (collection: Primitives). Do not hand-edit — run the ds-tokens-sync skill.",
+  "color": {
+    "$type": "color",
+    "neutral": {
+      "0":   { "$value": "#ffffff" },
+      "50":  { "$value": "#f7f8fa" },
+      "100": { "$value": "#eef0f4" },
+      "200": { "$value": "#dde1e8" },
+      "400": { "$value": "#9aa3b2" },
+      "600": { "$value": "#5b6576" },
+      "800": { "$value": "#2a3140" },
+      "900": { "$value": "#161b26" },
+      "950": { "$value": "#0d1118" }
+    },
+    "blue": {
+      "100": { "$value": "#e3ebff" },
+      "300": { "$value": "#8fb0ff" },
+      "500": { "$value": "#3d6dff" },
+      "600": { "$value": "#2a55e6" },
+      "700": { "$value": "#1f42b8" }
+    },
+    "red": {
+      "100": { "$value": "#ffe5e5" },
+      "400": { "$value": "#ff7a7a" },
+      "600": { "$value": "#d92d2d" }
+    },
+    "green": {
+      "100": { "$value": "#ddf6e6" },
+      "400": { "$value": "#4cc77c" },
+      "600": { "$value": "#1d8a4a" }
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "2":  { "$value": "2px" },
+    "4":  { "$value": "4px" },
+    "8":  { "$value": "8px" },
+    "12": { "$value": "12px" },
+    "16": { "$value": "16px" },
+    "20": { "$value": "20px" },
+    "24": { "$value": "24px" },
+    "32": { "$value": "32px" },
+    "40": { "$value": "40px" },
+    "48": { "$value": "48px" },
+    "64": { "$value": "64px" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "8":    { "$value": "8px" },
+    "12":   { "$value": "12px" },
+    "full": { "$value": "9999px" }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": { "$value": "Inter, ui-sans-serif, system-ui, sans-serif" }
+    },
+    "size": {
+      "$type": "dimension",
+      "12": { "$value": "12px" },
+      "14": { "$value": "14px" },
+      "16": { "$value": "16px" },
+      "20": { "$value": "20px" },
+      "24": { "$value": "24px" },
+      "32": { "$value": "32px" }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular":  { "$value": 400 },
+      "medium":   { "$value": 500 },
+      "semibold": { "$value": 600 }
+    }
+  }
+}

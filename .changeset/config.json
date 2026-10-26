@@ -1,0 +1,9 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.5/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [["@tawan-design/ui", "@tawan-design/tokens"]],
+  "access": "restricted",
+  "baseBranch": "main",
+  "ignore": ["docs", "playground"]
+}

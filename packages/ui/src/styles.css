@@ -1,0 +1,86 @@
+/*
+ * The ONE stylesheet of the design system.
+ * Storybook, the playground, and product apps all import this file,
+ * so components look identical everywhere ("missing styles" fix).
+ *
+ * Token flow: Figma Variables → @tawan-design/tokens (CSS vars) → Tailwind theme below → components.
+ * Tailwind's default palette/spacing/radius are REMOVED, so only token-backed classes exist.
+ */
+@import "tailwindcss";
+@import "@tawan-design/tokens/tokens.css";
+
+/* Scan component sources for class names, wherever this file is imported from */
+@source "./";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  /* Reset Tailwind defaults → only tokens are allowed */
+  --color-*: initial;
+  --spacing-*: initial;
+  --radius-*: initial;
+  --text-*: initial;
+  --font-*: initial;
+
+  /* Colors (semantic only) → bg-surface, text-fg-muted, border-border-focus ... */
+  --color-surface: var(--ds-color-bg-surface);
+  --color-subtle: var(--ds-color-bg-subtle);
+  --color-muted: var(--ds-color-bg-muted);
+  --color-brand: var(--ds-color-bg-brand);
+  --color-brand-hover: var(--ds-color-bg-brand-hover);
+  --color-brand-soft: var(--ds-color-bg-brand-soft);
+  --color-danger: var(--ds-color-bg-danger);
+  --color-danger-soft: var(--ds-color-bg-danger-soft);
+  --color-success-soft: var(--ds-color-bg-success-soft);
+  --color-overlay: var(--ds-color-bg-overlay);
+
+  --color-fg: var(--ds-color-text-default);
+  --color-fg-muted: var(--ds-color-text-muted);
+  --color-fg-brand: var(--ds-color-text-brand);
+  --color-fg-on-brand: var(--ds-color-text-on-brand);
+  --color-fg-danger: var(--ds-color-text-danger);
+  --color-fg-success: var(--ds-color-text-success);
+
+  --color-border: var(--ds-color-border-default);
+  --color-border-strong: var(--ds-color-border-strong);
+  --color-border-focus: var(--ds-color-border-focus);
+  --color-border-danger: var(--ds-color-border-danger);
+
+  --color-transparent: transparent;
+
+  /* Spacing → p-8 = 8px, gap-16 = 16px (names match Figma: space/8, space/16) */
+  --spacing-0: 0px;
+  --spacing-2: var(--ds-space-2);
+  --spacing-4: var(--ds-space-4);
+  --spacing-8: var(--ds-space-8);
+  --spacing-12: var(--ds-space-12);
+  --spacing-16: var(--ds-space-16);
+  --spacing-20: var(--ds-space-20);
+  --spacing-24: var(--ds-space-24);
+  --spacing-32: var(--ds-space-32);
+  --spacing-40: var(--ds-space-40);
+  --spacing-48: var(--ds-space-48);
+  --spacing-64: var(--ds-space-64);
+
+  /* Radius → rounded-8, rounded-12, rounded-full */
+  --radius-8: var(--ds-radius-8);
+  --radius-12: var(--ds-radius-12);
+  --radius-full: var(--ds-radius-full);
+
+  /* Type → text-14, font-sans */
+  --font-sans: var(--ds-font-family-sans);
+  --text-12: var(--ds-font-size-12);
+  --text-14: var(--ds-font-size-14);
+  --text-16: var(--ds-font-size-16);
+  --text-20: var(--ds-font-size-20);
+  --text-24: var(--ds-font-size-24);
+  --text-32: var(--ds-font-size-32);
+}
+
+@layer base {
+  html, body {
+    background: var(--ds-color-bg-surface);
+    color: var(--ds-color-text-default);
+    font-family: var(--ds-font-family-sans);
+  }
+}

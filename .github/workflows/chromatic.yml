@@ -1,0 +1,28 @@
+# Publishes Storybook for every PR and runs visual review.
+# Designers review and approve visual changes in Chromatic's UI. No code reading needed.
+# Setup: create a project at chromatic.com, add CHROMATIC_PROJECT_TOKEN to repo secrets.
+name: Storybook preview + visual review
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm tokens
+      - uses: chromaui/action@v11
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: apps/docs
+          buildScriptName: build
+          storybookBuildDir: storybook-static
+          exitZeroOnChanges: true   # changes go to review, they don't fail the build
+          onlyChanged: true
