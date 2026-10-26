@@ -12,9 +12,13 @@ description: Use whenever building or editing any product UI (screen, page, flow
    Figma instance names match component names.
 
 ## While writing
-- Import only from `@tawan-design/ui`. Layout (flex, grid, gap, padding) uses token classes: `p-*`, `gap-*` from 2–64.
-- Allowed color classes: `bg-surface|subtle|muted|brand|brand-hover|brand-soft|danger|danger-soft|success-soft|overlay`,
-  `text-fg|fg-muted|fg-brand|fg-on-brand|fg-danger|fg-success`, `border-border|border-strong|border-focus|border-danger`.
+- Import only from `@tawan-design/ui`. Layout (flex, grid, gap, padding) uses token classes: `p-*`, `gap-*` from the `space-*` scale (0–96).
+- Every allowed class is generated in `packages/tokens/build/css/theme.css` and named exactly like the Figma variable:
+  - Text and icons: `text-content-*` (`primary`, `secondary`, `tertiary`, `brand`, `link`, `danger`…), `text-icon-*`
+  - Backgrounds: `bg-surface-*` for containers, `bg-action-*` for interactive fills (`action-brand`, `action-brand-hover`…)
+  - Borders: `border-border-*` (`subtle`, `default` for decoration; `strong` for control boundaries), focus: `ring-focus-ring`
+  - Type: `text-body-*`, `text-label-*`, `text-heading-*`, `text-code-*` (+ `font-mono`). Radius: `rounded-sm|md|lg|xl|xxl|pill`.
+  - Sizes: `h-control-sm|md|lg`, `size-icon-*`, `size-avatar-*`. Opacity: `opacity-disabled|overlay|loading`.
 - **Never**: raw hex/rgb, `[13px]`-style arbitrary values for spacing/color/radius/font size, a native `<button>`/`<input>` with styling, a custom modal.
 - Only use props that exist in `catalog.json`.
 

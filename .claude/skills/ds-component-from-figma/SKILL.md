@@ -20,6 +20,8 @@ Write down:
 ## 3. Build
 - Folder: `packages/ui/src/components/<Name>/`
 - `<Name>.tsx`: `cva` for variants, `cn()` for merging, `forwardRef` for DOM components. Token classes only.
+  A Figma variable maps 1:1 to a class with the same name (`action-brand` fill → `bg-action-brand`, `content-on-brand` text →
+  `text-content-on-brand`, `radius-md` → `rounded-md`, `space-12` padding → `px-12`). The full list is `packages/tokens/build/css/theme.css`.
   Overlays and complex interactive components → wrap the matching **Radix** primitive.
 - JSDoc on the component (`/** Name — Figma: "<component set name>" ... */`) and on each prop. This becomes the catalog description.
 - `<Name>.stories.tsx`: one story per variant + every state (hover via play fn optional, disabled, error, loading) + `parameters.design.url` = Figma URL.

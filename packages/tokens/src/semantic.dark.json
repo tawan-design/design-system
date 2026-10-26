@@ -1,32 +1,920 @@
 {
-  "$description": "Semantic tokens, Dark mode. Figma Variables collection: Semantic / mode: Dark.",
+  "$description": "Generated from Figma Variables (TAWAN DESIGN SYSTEM). Do not hand-edit: run the ds-tokens-sync skill.",
   "color": {
-    "$type": "color",
-    "bg": {
-      "surface":     { "$value": "{color.neutral.950}" },
-      "subtle":      { "$value": "{color.neutral.900}" },
-      "muted":       { "$value": "{color.neutral.800}" },
-      "brand":       { "$value": "{color.blue.500}" },
-      "brand-hover": { "$value": "{color.blue.300}" },
-      "brand-soft":  { "$value": "#1f42b84d" },
-      "danger":      { "$value": "{color.red.400}" },
-      "danger-soft": { "$value": "#d92d2d33" },
-      "success-soft":{ "$value": "#1d8a4a33" },
-      "overlay":     { "$value": "#000000b3" }
+    "content-primary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.10}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-primary",
+          "collection": "Colors",
+          "codeSyntax": "content-primary"
+        }
+      }
     },
-    "text": {
-      "default":  { "$value": "{color.neutral.50}" },
-      "muted":    { "$value": "{color.neutral.400}" },
-      "brand":    { "$value": "{color.blue.300}" },
-      "on-brand": { "$value": "{color.neutral.0}" },
-      "danger":   { "$value": "{color.red.400}" },
-      "success":  { "$value": "{color.green.400}" }
+    "content-secondary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.30}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-secondary",
+          "collection": "Colors",
+          "codeSyntax": "content-secondary"
+        }
+      }
     },
-    "border": {
-      "default": { "$value": "{color.neutral.800}" },
-      "strong":  { "$value": "{color.neutral.600}" },
-      "focus":   { "$value": "{color.blue.300}" },
-      "danger":  { "$value": "{color.red.400}" }
+    "content-tertiary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-tertiary",
+          "collection": "Colors",
+          "codeSyntax": "content-tertiary"
+        }
+      }
+    },
+    "content-placeholder": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.40}",
+      "$description": "Placeholder text color.",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-placeholder",
+          "collection": "Colors",
+          "codeSyntax": "content-placeholder"
+        }
+      }
+    },
+    "content-brand": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.30}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-brand",
+          "collection": "Colors",
+          "codeSyntax": "content-brand"
+        }
+      }
+    },
+    "content-invert": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-invert",
+          "collection": "Colors",
+          "codeSyntax": "content-invert"
+        }
+      }
+    },
+    "content-disabled": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.60}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-disabled",
+          "collection": "Colors",
+          "codeSyntax": "content-disabled"
+        }
+      }
+    },
+    "content-link": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-link",
+          "collection": "Colors",
+          "codeSyntax": "content-link"
+        }
+      }
+    },
+    "content-success": {
+      "$type": "color",
+      "$value": "{color-primitives.success.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-success",
+          "collection": "Colors",
+          "codeSyntax": "content-success"
+        }
+      }
+    },
+    "content-warning": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-warning",
+          "collection": "Colors",
+          "codeSyntax": "content-warning"
+        }
+      }
+    },
+    "content-danger": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-danger",
+          "collection": "Colors",
+          "codeSyntax": "content-danger"
+        }
+      }
+    },
+    "content-info": {
+      "$type": "color",
+      "$value": "{color-primitives.info.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-info",
+          "collection": "Colors",
+          "codeSyntax": "content-info"
+        }
+      }
+    },
+    "content-on-brand": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.0}",
+      "$extensions": {
+        "com.figma": {
+          "name": "content-on-brand",
+          "collection": "Colors",
+          "codeSyntax": "content-on-brand"
+        }
+      }
+    },
+    "icon-primary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.10}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-primary",
+          "collection": "Colors",
+          "codeSyntax": "icon-primary"
+        }
+      }
+    },
+    "icon-secondary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.30}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-secondary",
+          "collection": "Colors",
+          "codeSyntax": "icon-secondary"
+        }
+      }
+    },
+    "icon-invert": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-invert",
+          "collection": "Colors",
+          "codeSyntax": "icon-invert"
+        }
+      }
+    },
+    "icon-disabled": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.60}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-disabled",
+          "collection": "Colors",
+          "codeSyntax": "icon-disabled"
+        }
+      }
+    },
+    "icon-success": {
+      "$type": "color",
+      "$value": "{color-primitives.success.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-success",
+          "collection": "Colors",
+          "codeSyntax": "icon-success"
+        }
+      }
+    },
+    "icon-warning": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-warning",
+          "collection": "Colors",
+          "codeSyntax": "icon-warning"
+        }
+      }
+    },
+    "icon-danger": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-danger",
+          "collection": "Colors",
+          "codeSyntax": "icon-danger"
+        }
+      }
+    },
+    "icon-info": {
+      "$type": "color",
+      "$value": "{color-primitives.info.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-info",
+          "collection": "Colors",
+          "codeSyntax": "icon-info"
+        }
+      }
+    },
+    "icon-neutral": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "icon-neutral",
+          "collection": "Colors",
+          "codeSyntax": "icon-neutral"
+        }
+      }
+    },
+    "surface-canvas": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.100}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-canvas",
+          "collection": "Colors",
+          "codeSyntax": "surface-canvas"
+        }
+      }
+    },
+    "surface-primary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-primary",
+          "collection": "Colors",
+          "codeSyntax": "surface-primary"
+        }
+      }
+    },
+    "surface-secondary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-secondary",
+          "collection": "Colors",
+          "codeSyntax": "surface-secondary"
+        }
+      }
+    },
+    "surface-tertiary": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.70}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-tertiary",
+          "collection": "Colors",
+          "codeSyntax": "surface-tertiary"
+        }
+      }
+    },
+    "surface-invert": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.0}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-invert",
+          "collection": "Colors",
+          "codeSyntax": "surface-invert"
+        }
+      }
+    },
+    "surface-neutral": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-neutral",
+          "collection": "Colors",
+          "codeSyntax": "surface-neutral"
+        }
+      }
+    },
+    "surface-brand": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.60}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-brand",
+          "collection": "Colors",
+          "codeSyntax": "surface-brand"
+        }
+      }
+    },
+    "surface-brand-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.opacity.brand-40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-brand-subtle",
+          "collection": "Colors",
+          "codeSyntax": "surface-brand-subtle"
+        }
+      }
+    },
+    "surface-success": {
+      "$type": "color",
+      "$value": "{color-primitives.success.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-success",
+          "collection": "Colors",
+          "codeSyntax": "surface-success"
+        }
+      }
+    },
+    "surface-warning": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-warning",
+          "collection": "Colors",
+          "codeSyntax": "surface-warning"
+        }
+      }
+    },
+    "surface-danger": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-danger",
+          "collection": "Colors",
+          "codeSyntax": "surface-danger"
+        }
+      }
+    },
+    "surface-info": {
+      "$type": "color",
+      "$value": "{color-primitives.info.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-info",
+          "collection": "Colors",
+          "codeSyntax": "surface-info"
+        }
+      }
+    },
+    "surface-overlay": {
+      "$type": "color",
+      "$value": "{color-primitives.opacity.black-72}",
+      "$extensions": {
+        "com.figma": {
+          "name": "surface-overlay",
+          "collection": "Colors",
+          "codeSyntax": "surface-overlay"
+        }
+      }
+    },
+    "border-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-subtle",
+          "collection": "Colors",
+          "codeSyntax": "border-subtle"
+        }
+      }
+    },
+    "border-default": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.70}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-default",
+          "collection": "Colors",
+          "codeSyntax": "border-default"
+        }
+      }
+    },
+    "border-strong": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.45}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-strong",
+          "collection": "Colors",
+          "codeSyntax": "border-strong"
+        }
+      }
+    },
+    "border-brand": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-brand",
+          "collection": "Colors",
+          "codeSyntax": "border-brand"
+        }
+      }
+    },
+    "border-invert": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-invert",
+          "collection": "Colors",
+          "codeSyntax": "border-invert"
+        }
+      }
+    },
+    "border-disabled": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-disabled",
+          "collection": "Colors",
+          "codeSyntax": "border-disabled"
+        }
+      }
+    },
+    "border-success": {
+      "$type": "color",
+      "$value": "{color-primitives.success.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-success",
+          "collection": "Colors",
+          "codeSyntax": "border-success"
+        }
+      }
+    },
+    "border-warning": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-warning",
+          "collection": "Colors",
+          "codeSyntax": "border-warning"
+        }
+      }
+    },
+    "border-danger": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-danger",
+          "collection": "Colors",
+          "codeSyntax": "border-danger"
+        }
+      }
+    },
+    "border-info": {
+      "$type": "color",
+      "$value": "{color-primitives.info.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-info",
+          "collection": "Colors",
+          "codeSyntax": "border-info"
+        }
+      }
+    },
+    "border-neutral": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.60}",
+      "$extensions": {
+        "com.figma": {
+          "name": "border-neutral",
+          "collection": "Colors",
+          "codeSyntax": "border-neutral"
+        }
+      }
+    },
+    "focus-ring": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "focus-ring",
+          "collection": "Colors",
+          "codeSyntax": "focus-ring"
+        }
+      }
+    },
+    "action-brand": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.60}",
+      "$description": "Solid is implicit; renamed from action-brand-solid to action-brand on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand",
+          "collection": "Colors",
+          "codeSyntax": "action-brand"
+        }
+      }
+    },
+    "action-brand-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.50}",
+      "$description": "Solid is implicit; renamed from action-brand-solid-hover to action-brand-hover on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-brand-hover"
+        }
+      }
+    },
+    "action-brand-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.40}",
+      "$description": "Solid is implicit; renamed from action-brand-solid-pressed to action-brand-pressed on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-brand-pressed"
+        }
+      }
+    },
+    "action-brand-disabled": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand-disabled",
+          "collection": "Colors",
+          "codeSyntax": "action-brand-disabled"
+        }
+      }
+    },
+    "action-brand-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.opacity.brand-20}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand-subtle",
+          "collection": "Colors",
+          "codeSyntax": "action-brand-subtle"
+        }
+      }
+    },
+    "action-brand-subtle-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand-subtle-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-brand-subtle-hover"
+        }
+      }
+    },
+    "action-brand-subtle-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.brand.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-brand-subtle-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-brand-subtle-pressed"
+        }
+      }
+    },
+    "action-neutral": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.0}",
+      "$description": "Solid is implicit; renamed from action-neutral-solid to action-neutral on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral"
+        }
+      }
+    },
+    "action-neutral-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.5}",
+      "$description": "Solid is implicit; renamed from action-neutral-solid-hover to action-neutral-hover on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral-hover"
+        }
+      }
+    },
+    "action-neutral-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.10}",
+      "$description": "Solid is implicit; renamed from action-neutral-solid-pressed to action-neutral-pressed on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral-pressed"
+        }
+      }
+    },
+    "action-neutral-disabled": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral-disabled",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral-disabled"
+        }
+      }
+    },
+    "action-neutral-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.80}",
+      "$description": "Renamed from action-neutral on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral-subtle",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral-subtle"
+        }
+      }
+    },
+    "action-neutral-subtle-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.70}",
+      "$description": "Renamed from action-neutral-hover on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral-subtle-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral-subtle-hover"
+        }
+      }
+    },
+    "action-neutral-subtle-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.neutral.60}",
+      "$description": "Renamed from action-neutral-pressed on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-neutral-subtle-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-neutral-subtle-pressed"
+        }
+      }
+    },
+    "action-ghost": {
+      "$type": "color",
+      "$value": "{color-primitives.opacity.white-0}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-ghost",
+          "collection": "Colors",
+          "codeSyntax": "action-ghost"
+        }
+      }
+    },
+    "action-ghost-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.opacity.white-8}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-ghost-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-ghost-hover"
+        }
+      }
+    },
+    "action-ghost-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.opacity.white-12}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-ghost-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-ghost-pressed"
+        }
+      }
+    },
+    "action-danger": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.70}",
+      "$description": "Solid is implicit; renamed from action-danger-solid to action-danger on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-danger",
+          "collection": "Colors",
+          "codeSyntax": "action-danger"
+        }
+      }
+    },
+    "action-danger-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.50}",
+      "$description": "Solid is implicit; renamed from action-danger-solid-hover to action-danger-hover on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-danger-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-danger-hover"
+        }
+      }
+    },
+    "action-danger-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.40}",
+      "$description": "Solid is implicit; renamed from action-danger-solid-pressed to action-danger-pressed on 2026-08-20.",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-danger-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-danger-pressed"
+        }
+      }
+    },
+    "action-danger-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-danger-subtle",
+          "collection": "Colors",
+          "codeSyntax": "action-danger-subtle"
+        }
+      }
+    },
+    "action-danger-subtle-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-danger-subtle-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-danger-subtle-hover"
+        }
+      }
+    },
+    "action-danger-subtle-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.danger.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-danger-subtle-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-danger-subtle-pressed"
+        }
+      }
+    },
+    "action-success": {
+      "$type": "color",
+      "$value": "{color-primitives.success.60}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-success",
+          "collection": "Colors",
+          "codeSyntax": "action-success"
+        }
+      }
+    },
+    "action-success-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.success.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-success-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-success-hover"
+        }
+      }
+    },
+    "action-success-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.success.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-success-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-success-pressed"
+        }
+      }
+    },
+    "action-success-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.success.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-success-subtle",
+          "collection": "Colors",
+          "codeSyntax": "action-success-subtle"
+        }
+      }
+    },
+    "action-success-subtle-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.success.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-success-subtle-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-success-subtle-hover"
+        }
+      }
+    },
+    "action-success-subtle-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.success.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-success-subtle-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-success-subtle-pressed"
+        }
+      }
+    },
+    "action-warning": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.60}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-warning",
+          "collection": "Colors",
+          "codeSyntax": "action-warning"
+        }
+      }
+    },
+    "action-warning-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.50}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-warning-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-warning-hover"
+        }
+      }
+    },
+    "action-warning-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.40}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-warning-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-warning-pressed"
+        }
+      }
+    },
+    "action-warning-subtle": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.95}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-warning-subtle",
+          "collection": "Colors",
+          "codeSyntax": "action-warning-subtle"
+        }
+      }
+    },
+    "action-warning-subtle-hover": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.90}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-warning-subtle-hover",
+          "collection": "Colors",
+          "codeSyntax": "action-warning-subtle-hover"
+        }
+      }
+    },
+    "action-warning-subtle-pressed": {
+      "$type": "color",
+      "$value": "{color-primitives.warning.80}",
+      "$extensions": {
+        "com.figma": {
+          "name": "action-warning-subtle-pressed",
+          "collection": "Colors",
+          "codeSyntax": "action-warning-subtle-pressed"
+        }
+      }
     }
   }
 }

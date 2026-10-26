@@ -3,18 +3,26 @@
   "version": "0.1.0",
   "description": "Design tokens, generated from Figma Variables. Never hand-edit build output.",
   "type": "module",
-  "files": ["build", "src"],
+  "files": [
+    "build",
+    "src",
+    "figma"
+  ],
   "exports": {
     "./tokens.css": "./build/css/tokens.css",
     "./tokens.json": "./build/json/tokens.json",
-    "./src/*": "./src/*"
+    "./src/*": "./src/*",
+    "./theme.css": "./build/css/theme.css"
   },
   "scripts": {
+    "from-figma": "node scripts/from-figma.mjs",
     "build": "node build.mjs",
     "typecheck": "echo 'tokens: nothing to typecheck'"
   },
   "devDependencies": {
     "style-dictionary": "^4.3.3"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com" }
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }

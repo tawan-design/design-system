@@ -1,27 +1,66 @@
 import { Meta } from "@storybook/blocks";
-import { ColorTokens, SpacingTokens, RadiusTokens, TypeTokens } from "./TokenBlocks";
+import { PrimitiveRamps, SemanticColors, TypeRoles, Spacing, Sizes, Radius, SimpleScale } from "./TokenBlocks";
 
 <Meta title="Foundations/Tokens" />
 
 # Foundations
 
-Every value below is **generated from `packages/tokens/src`**, which is exported from Figma Variables.
-Switch **Theme** in the toolbar to see Dark mode.
+Every value on this page is **generated from `packages/tokens/src`**, which is exported from the
+Figma file **TAWAN DESIGN SYSTEM** (Variables). Names match Figma exactly:
 
-> Components may only use **semantic** tokens (`bg/surface`, `text/muted`), never primitives (`blue/600`) or raw values.
+| Figma variable | CSS variable | Tailwind class |
+|---|---|---|
+| `content-secondary` | `var(--content-secondary)` | `text-content-secondary` |
+| `surface-primary` | `var(--surface-primary)` | `bg-surface-primary` |
+| `border-strong` | `var(--border-strong)` | `border-border-strong` |
+| `space-16` | `var(--space-16)` | `p-16`, `gap-16` |
+| `radius-md` | `var(--radius-md)` | `rounded-md` |
+| `body-md-*` | `var(--body-md-font-size)` … | `text-body-md` |
 
-## Color
+> Components may only use **semantic** tokens (`content-*`, `surface-*`, `border-*`, `icon-*`, `action-*`),
+> never primitives (`color primitives/brand/50`) or raw values. Switch **Theme** in the toolbar to preview the page in Dark mode.
 
-<ColorTokens />
+Defaults built today: **Light/Dark**, **Brand 1**, **Balanced** radius, **Font1**. Brand 2, Sharp/Rounded radius and
+Font2 are stored in `packages/tokens/src/modes/` for a later theme.
 
-## Spacing
+## Semantic colors
 
-<SpacingTokens />
+<SemanticColors />
 
-## Radius
+## Primitive palette
 
-<RadiusTokens />
+<PrimitiveRamps />
 
 ## Typography
 
-<TypeTokens />
+Each role sets size, line height, letter spacing and weight in one class. Code roles also need `font-mono`.
+
+<TypeRoles />
+
+## Spacing
+
+<Spacing />
+
+## Sizes
+
+Controls, icons and avatars.
+
+<Sizes />
+
+## Radius
+
+<Radius />
+
+## Border width
+
+<SimpleScale group="border" utility={(c) => c} />
+
+## Opacity
+
+<SimpleScale group="opacity" utility={(c) => c} />
+
+## Elevation
+
+Elevation levels from Figma. There are no shadow styles in the Figma file yet, so there are no shadow classes.
+
+<SimpleScale group="elevation" />

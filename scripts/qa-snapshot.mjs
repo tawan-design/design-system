@@ -46,7 +46,9 @@ for (const theme of themes) {
   await page.waitForTimeout(400);
 
   const data = await page.evaluate((rootSel) => {
-    // 1. Collect every --ds-* token and its resolved value
+    // 1. Collect every token (CSS variables named after the Figma code syntax) and its resolved value
+    const SEMANTIC_COLOR = /^--(content|icon|surface|border|action)-|^--focus-ring$/;
+    const isColorToken = (n) => (SEMANTIC_COLOR.test(n) && !n.startsWith("--border-width-") && !n.startsWith("--border-focus-ring-width")) || n.startsWith("--color-primitives-");
     const rootStyle = getComputedStyle(document.documentElement);
     const names = new Set();
     for (const sheet of document.styleSheets) {
@@ -54,7 +56,7 @@ for (const theme of themes) {
       try { rules = sheet.cssRules; } catch { continue; }
       const walk = (list) => {
         for (const r of list) {
-          if (r.style) for (const p of r.style) if (p.startsWith("--ds-")) names.add(p);
+          if (r.style) for (const p of r.style) if (p.startsWith("--") && !p.startsWith("--tw-")) names.add(p);
           if (r.cssRules) walk(r.cssRules);
         }
       };
@@ -67,10 +69,10 @@ for (const theme of themes) {
     for (const n of names) {
       const raw = rootStyle.getPropertyValue(n).trim();
       if (!raw) continue;
-      if (n.startsWith("--ds-color-")) {
+      if (isColorToken(n)) {
         const c = norm("color", raw);
         (colorToToken[c] ||= []).push(n);
-      } else if (/^--ds-(space|radius|font-size)-/.test(n)) {
+      } else if (/^--(space|radius)-|-font-size$/.test(n)) {
         (sizeToToken[raw] ||= []).push(n);
       }
     }
@@ -82,13 +84,13 @@ for (const theme of themes) {
         // kind = "color:bg" | "color:text" | "color:border" → prefer the matching semantic group
         const hits = colorToToken[v];
         if (!hits) return `RAW ${v}`;
-        const group = kind.split(":")[1];
-        const same = hits.filter((t) => t.startsWith(`--ds-color-${group}-`));
-        const semantic = hits.filter((t) => /^--ds-color-(bg|text|border)-/.test(t));
+        const group = { bg: /^--(surface|action)-/, text: /^--(content|icon)-/, border: /^--border-|^--focus-ring$/ }[kind.split(":")[1]];
+        const same = hits.filter((t) => group.test(t));
+        const semantic = hits.filter((t) => SEMANTIC_COLOR.test(t));
         return (same.length ? same : semantic.length ? semantic : hits).join(" | ");
       }
-      const pref = { space: "--ds-space-", radius: "--ds-radius-", size: "--ds-font-size-" }[kind];
-      const hit = (sizeToToken[v] || []).find((t) => t.startsWith(pref));
+      const pref = { space: /^--space-/, radius: /^--radius-/, size: /-font-size$/ }[kind];
+      const hit = (sizeToToken[v] || []).find((t) => pref.test(t) && !t.startsWith("--foundation-primitives-"));
       return hit || `RAW ${v}`;
     };
 
