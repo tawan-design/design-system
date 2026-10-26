@@ -1,10 +1,10 @@
 # Design System Playbook
 How we create, maintain, scale and apply the design system with Claude.
-Owner: Design team · Repo: `design-system` · Last updated: 2026-10-25
+Owner: Design team · Repo: `design-system` · Last updated: 2026-10-26
 
-> **How to read this:** Part 1 is the 1-page map. Part 2 is one-time setup (tools and connectors). Part 3 is the recipes, one per situation, each with **who · where · inputs to attach · skills · connectors · steps · sample prompt · output · done checklist**.
+> **How to read this:** Part 1 is the 1-page map. Part 2 is one-time setup (tools and connectors). Part 3 is how we build the system from Figma (roadmap, wireframe → screen, Labs). Part 4 is the recipes, one per situation, each with **who · where · inputs to attach · skills · connectors · steps · sample prompt · output · done checklist**.
 >
-> Legend: ✅ skill in the repo (`.claude/skills/`) · 🧩 skill from an installed plugin (Figma / Design)
+> Legend: ✅ skill in the repo (`.claude/skills/`) · 🧩 skill from an installed plugin (Figma / Design) · 🆕 planned skill
 
 ---
 
@@ -102,7 +102,7 @@ pnpm install
 pnpm dev                     # Storybook opens at localhost:6006 ✔
 
 # 2. Personalize
-#    find/replace "@yourco" → your GitHub org (e.g. @boole)
+#    find/replace "@yourco" → your GitHub org (done here: @tawan-design)
 
 # 3. Push
 git init && git add -A && git commit -m "chore: bootstrap design system"
@@ -134,7 +134,114 @@ Naming rules that make the agent accurate:
 
 ---
 
-## Part 3 — Recipes
+## Part 3 — Build the system
+
+How we turn the Figma library into code, and wireframes into real screens. **Figma is the only source of truth.**
+
+### 3.1 Build roadmap
+
+We don't convert every Figma component up front. Reviewing 30+ components at once is shallow, unused code rots, and a mistake in the first conventions would repeat everywhere. Instead: tokens, then a small core wave, then **build on demand** as real screens need components.
+
+| Phase | What | Done when |
+|---|---|---|
+| **0 · Tokens** | Figma variables → code (Recipe A). Light/Dark with Brand 1, Balanced radius, Font1 as defaults. Figma names kept as-is (`content-primary`, `surface-canvas`, `action-brand`…). Repo skills updated to the new names. | Storybook Foundations shows the real palette, type, spacing and radius |
+| **1 · Clean slate + core wave** | Remove the starter sample components. Build the 8 most-used components from Figma, 1–2 per PR (Recipe C): **Button, Icon, Icon Button, Text-Field, Badge, Checkbox, Toggle, Modal** | Each approved in Chromatic and listed in `catalog.json` |
+| **2 · Screen-driven** | Each wireframe pulls in the components it needs (Recipe L). Components missing from Figma go through Labs (Recipe M) | Ongoing |
+| **3 · Themes** | Brand 2, Sharp/Rounded radius, Font2 as switchable themes | All modes switchable in Storybook |
+| **4 · Playground** | Rebuild the sample product screens from the crypto components | Playground uses only the official library |
+
+### 3.2 Rules of the build
+1. **Figma decides, code follows.** Component names and properties match Figma (`Type`, `Tone`, `Size` → `type`, `tone`, `size`).
+2. **One component (or 2 closely related) per PR**, reviewed visually in Chromatic.
+3. **Labs is never official.** Labs components aren't in `catalog.json`, so agents can't use them in products.
+4. **Promote only from Figma.** A Labs component becomes official only after its Figma version is refined and moved to its own page.
+5. **Check IA before visuals.** First confirm the screen has the right content, data and actions; then judge how it looks.
+
+### Recipe L — Wireframe → real screen (with IA check)
+
+| | |
+|---|---|
+| **Goal** | A wireframe becomes a real screen built only from the design system, with the same information architecture |
+| **Who** | Designer (confirms IA, reviews visuals) · Claude (inventory, build, IA check) |
+| **Where** | Claude Code → `apps/playground` → PR → Chromatic |
+| **Attach / provide** | Wireframe screenshot(s) · who the screen is for and its main task · real or sample data notes · breakpoints |
+| **Skills** | 🆕 `ds-wireframe-to-screen` (planned) · ✅ `ds-build-screen` · ✅ `ds-audit` · 🆕 `ds-labs` (planned, for gaps) |
+| **Connectors** | GitHub · Figma (only when a gap needs a Labs draft) |
+
+**Steps**
+1. **You send the wireframe.**
+2. **IA inventory (no code yet).** Claude lists every region, content item, data field, action and state it sees, top to bottom.
+3. **You confirm the inventory.** Fix anything misread. This list becomes the contract for the screen.
+4. **Component map.** Each inventory item → an official component from `catalog.json`, or a **GAP**.
+5. **Build** the screen in the playground. Gaps go to Labs (Recipe M), never hand-rolled.
+6. **IA check.** Claude compares the built screen with the confirmed inventory and reports ✔/✖ per item: missing, extra, wrong order, wrong data or wrong action.
+7. **Visual review.** You judge how well it adapts in the Chromatic preview. Claude also runs `ds-audit` to check that the screen really used the system.
+
+**Sample prompt (Claude Code)**
+```
+Use ds-wireframe-to-screen. Wireframe attached: "Portfolio overview".
+User: retail crypto investor checking holdings. Breakpoints: 375 / 1280.
+Step 1 only: give me the IA inventory as a table (region · item · data · action · state).
+Don't build until I confirm it.
+```
+
+**IA check report, example**
+
+| # | Inventory item | Built as | Result |
+|---|---|---|---|
+| 1 | Header · total balance + 24h change | `Heading` + `Badge tone="success"` | ✔ |
+| 2 | Holdings list · coin, amount, value, change | `List Item` × n | ✔ |
+| 3 | "Buy" primary action | `Button type="filled" tone="brand"` | ✔ |
+| 4 | Allocation chart | Labs: `DonutChart` | ⚠ GAP → Labs |
+| 5 | Empty state when no holdings | – | ✖ missing |
+
+**Output:** confirmed IA inventory · screen PR · IA check table · `ds-audit` score
+**Done when:** ☐ inventory confirmed by the designer ☐ IA check all ✔ (or gaps logged) ☐ visuals approved in Chromatic ☐ audit ≥ 85
+
+### Recipe M — Labs: draft a missing component, then promote it
+
+| | |
+|---|---|
+| **Goal** | A screen needs something the library doesn't have. Draft it safely, try it in real screens, then make it official from Figma. |
+| **Who** | Claude (drafts) · Designer (refines in Figma, decides on promotion) · DS team (approves) |
+| **Where** | Code: `packages/ui/src/labs/`, imported from `@tawan-design/ui/labs`, shown under "Labs" in Storybook · Figma: the **🧪 LABS** page of the DS file |
+| **Attach / provide** | The GAP from Recipe L · the screen(s) that need it · any reference you like |
+| **Skills** | 🆕 `ds-labs` (planned) · 🧩 `figma-use` + `figma-generate-library` (Figma draft) · ✅ `ds-component-from-figma` (promotion) |
+| **Connectors** | Figma · GitHub |
+
+**Steps**
+1. **Draft in code.** Claude builds it in `labs/` with token classes only, plus a story under "Labs/". It is **not** added to `catalog.json`.
+2. **Draft in Figma.** Claude creates a matching draft on the 🧪 LABS page, bound to your variables.
+3. **Use it** in the playground screen that needed it.
+4. **Refine in Figma.** The designer polishes the draft: variants, states, naming.
+5. **Promote** once it's used in ≥2 real screens ([GOVERNANCE.md](../GOVERNANCE.md)). Move the Figma component from LABS to its own page, then Claude rebuilds it from Figma into the official library (Recipe C) and deletes the Labs version.
+
+**Sample prompt (Claude Code)**
+```
+Use ds-labs for the GAP "DonutChart" from the Portfolio screen.
+Draft it in packages/ui/src/labs with a Labs story, and a matching draft
+on the 🧪 LABS page in Figma: <Figma file URL>. Use only existing variables.
+Show me both before using it in the screen.
+```
+
+**Output:** Labs component (code + Figma draft) → later an official component PR
+**Done when:** ☐ draft exists in both places ☐ never listed in `catalog.json` while in Labs ☐ promoted from the refined Figma version, Labs copy removed
+
+### 3.3 Skills for the build
+
+| Skill | Status | Why |
+|---|---|---|
+| `ds-tokens-sync`, `ds-component-from-figma`, `ds-build-screen`, `ds-design-qa` | **Update in Phase 0** | They still name the starter tokens (`bg-surface`, `text-fg-muted`). After Phase 0 they must use the Figma names. |
+| 🆕 `ds-wireframe-to-screen` | Planned, after the core wave | Runs Recipe L: IA inventory → confirm → component map → build → IA check |
+| 🆕 `ds-labs` | Planned, after the core wave | Runs Recipe M: drafts in code and Figma, promotion checklist |
+| `ds-design-qa` | Keep | Visual score when a hi-fi Figma frame exists. Wireframes aren't hi-fi, so the designer reviews their visuals. |
+| `ds-audit` · `ds-drift-check` | Keep | Did the screen use the DS? Are Figma and code still in sync? |
+
+The two new skills are written **after** the core wave, so they're based on real conventions instead of guesses.
+
+---
+
+## Part 4 — Recipes
 
 Each recipe uses the same template. Copy the sample prompt and replace the `<…>` parts.
 
@@ -417,18 +524,18 @@ Draft the DS-GAP issues but ask me before creating them.
 | **Goal** | Product code that uses the DS correctly the first time |
 | **Who** | Frontend engineer (or designer prototyping in the playground) |
 | **Where** | Claude Code in the **product** repo (or `apps/playground` here) |
-| **Attach / provide** | Handoff spec · Figma URL · the product repo with `@yourco/ui` installed |
+| **Attach / provide** | Handoff spec · Figma URL · the product repo with `@tawan-design/ui` installed |
 | **Skills** | ✅ `ds-build-screen` · ✅ `ds-audit` · ✅ `ds-design-qa` |
 | **Connectors** | Figma |
 
 **One-time in each product repo**
 ```bash
-pnpm add @yourco/ui                         # from GitHub Packages
-# app root: import "@yourco/ui/styles.css";
+pnpm add @tawan-design/ui                         # from GitHub Packages
+# app root: import "@tawan-design/ui/styles.css";
 ```
 Then add to that repo's `AGENTS.md` / `CLAUDE.md`:
 ```
-@yourco/ui is installed. Before writing UI, read node_modules/@yourco/ui/catalog.json.
+@tawan-design/ui is installed. Before writing UI, read node_modules/@tawan-design/ui/catalog.json.
 Use its components before building anything new. Token classes only. Ask instead of guessing.
 ```
 (Copy `ds-build-screen` into that repo's `.claude/skills/` too.)
@@ -482,7 +589,7 @@ existing variables. No raw values. Then add the Code Connect mapping.
 
 **Sample prompt (announcement)**
 ```
-Read CHANGELOG.md for @yourco/ui <version>. Write a short release note for designers and
+Read CHANGELOG.md for @tawan-design/ui <version>. Write a short release note for designers and
 engineers: new components, changes, breaking changes with migration steps, link to Storybook.
 ```
 
@@ -522,15 +629,15 @@ Save the report to evals/drift/<today>.md and draft issues for the High items (a
 
 ---
 
-## Part 4 — Cheat sheet
+## Part 5 — Cheat sheet
 
-### 4.1 Which recipe?
+### 5.1 Which recipe?
 
 | I want to… | Recipe |
 |---|---|
 | Start the system from zero | A |
 | Change a color / spacing value / rename a token | B |
-| Make a new component | C |
+| Make a new component (it already exists in Figma) | C |
 | Add a variant or prop | D |
 | Review someone's component PR | E |
 | Check if the built UI matches Figma | F |
@@ -539,8 +646,10 @@ Save the report to evals/drift/<today>.md and draft issues for the High items (a
 | Get a code component into Figma | I |
 | Ship a new version | J |
 | Check whether agents actually use the DS | K |
+| Turn a wireframe into a real screen | L |
+| Build something the library doesn't have yet | M |
 
-### 4.2 Commands
+### 5.2 Commands
 
 | Command | Does |
 |---|---|
@@ -548,16 +657,16 @@ Save the report to evals/drift/<today>.md and draft issues for the High items (a
 | `pnpm playground` | Simulated product (localhost:5173) |
 | `pnpm tokens` | Rebuilds CSS variables from token JSON |
 | `pnpm check` | Typecheck + raw-value audit (the same as CI) |
-| `pnpm --filter @yourco/ui catalog` | Regenerates `catalog.json` |
+| `pnpm --filter @tawan-design/ui catalog` | Regenerates `catalog.json` |
 | `pnpm changeset` | Describe your change (patch/minor/major) |
 | `npx figma connect publish` | Publishes Code Connect snippets to Figma Dev Mode |
 | `pnpm qa:snapshot <url> --name x --theme both` | Built-UI side of design QA (screenshots + tokens per element) |
 | `pnpm catalog:summary` | Code side of a drift check (components, props, stories, Code Connect) |
 
-### 4.3 Semver in one line
+### 5.3 Semver in one line
 `patch` = fix · `minor` = new component/variant/token · `major` = rename or removal (needs a migration note)
 
-### 4.4 Golden rules
+### 5.4 Golden rules
 1. Figma variables are the source of token values. Never hand-edit token JSON.
 2. A pattern becomes a component only after it works in ≥2 real screens.
 3. Figma property names = code prop names.
@@ -565,7 +674,7 @@ Save the report to evals/drift/<today>.md and draft issues for the High items (a
 5. When an agent gets it wrong, fix the **docs** (one specific sentence), not just the code.
 6. Keep `AGENTS.md` an index. If you're typing values into it, they belong somewhere else.
 
-### 4.5 Skills index
+### 5.5 Skills index
 | Skill | Use it for | Recipe |
 |---|---|---|
 | `ds-tokens-sync` | Figma Variables → token JSON, classify breaking changes | A, B |
@@ -573,5 +682,7 @@ Save the report to evals/drift/<today>.md and draft issues for the High items (a
 | `ds-build-screen` | Building any UI with the system | H |
 | `ds-audit` | Score how well code uses the system (6 dimensions) | H, K |
 | `ds-design-qa` | Figma frame vs built UI, match score /100 | E, F, H |
+| 🆕 `ds-wireframe-to-screen` | Wireframe → IA inventory → screen → IA check (planned) | L |
+| 🆕 `ds-labs` | Draft a missing component in code + Figma, then promote (planned) | M |
 | `ds-drift-check` | Figma library vs code library | K |
 | `ds-handoff` | Feature handoff spec in DS terms + DS-GAP issues | G |
