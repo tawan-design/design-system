@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup Log</title>
+<style>
+:root{
+  --bg:#f7f7f5; --surface:#ffffff; --sunken:#f0f0ec; --text:#1c1d1f; --muted:#62656b; --faint:#8b8e94;
+  --border:#e3e3de; --accent:#2a55e6; --accent-soft:#e8eeff; --code-bg:#f3f3ef;
+  --you:#b45309; --you-soft:#fdf1e3; --claude:#2a55e6; --claude-soft:#e8eeff; --ok:#1a7f37; --ok-soft:#e6f4ea;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#121316; --surface:#1a1b1f; --sunken:#202126; --text:#ececec; --muted:#a3a6ad; --faint:#7c7f86;
+    --border:#2c2e34; --accent:#8fb0ff; --accent-soft:#1f2a4a; --code-bg:#202126;
+    --you:#f0b46a; --you-soft:#3a2a16; --claude:#8fb0ff; --claude-soft:#1f2a4a; --ok:#6fd38a; --ok-soft:#183324;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1240px;margin:0 auto}
+aside{position:sticky;top:0;height:100vh;overflow-y:auto;padding:28px 16px 40px 24px;border-right:1px solid var(--border)}
+main{padding:40px 56px 120px;min-width:0}
+.back{display:inline-block;font-size:13px;margin-bottom:16px}
+.brand{font-weight:700;font-size:15px;margin:0 0 4px}
+.brand-sub{color:var(--faint);font-size:12px;margin:0 0 20px}
+nav ul{list-style:none;margin:0;padding:0}
+nav>ul>li{margin-bottom:4px}
+.nav-ch{display:block;padding:6px 8px;border-radius:8px;color:var(--text);font-weight:600;font-size:13.5px}
+.nav-ch:hover{background:var(--sunken);text-decoration:none}
+nav ul ul{margin:2px 0 8px 18px;border-left:1px solid var(--border)}
+nav ul ul a{display:block;padding:3px 10px;color:var(--muted);font-size:13px;line-height:1.4}
+nav ul ul a:hover{color:var(--text);text-decoration:none}
+
+.hero h1{font-size:34px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+.hero p{color:var(--muted);margin:0 0 16px;max-width:720px}
+.chapter{padding-top:16px;margin-bottom:56px}
+.ch-head{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px}
+.ch-num{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.ch-head h2{font-size:26px;margin:4px 0 4px;letter-spacing:-.01em}
+.ch-intro{color:var(--muted);margin:0}
+h3{font-size:18px;margin:32px 0 10px}
+p{margin:0 0 12px}
+ul,ol{padding-left:22px;margin:0 0 12px} li{margin:3px 0}
+code{font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code-bg);padding:1px 5px;border-radius:5px}
+pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;padding:0;white-space:pre}
+table{border-collapse:collapse;width:100%;margin:0 0 16px;font-size:13.5px;display:block;overflow-x:auto}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;background:var(--sunken)}
+
+/* legend + who pills */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.you{background:var(--you-soft);color:var(--you)}
+.pill.claude{background:var(--claude-soft);color:var(--claude)}
+.pill.auto{background:var(--sunken);color:var(--muted)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 20px}
+.flow span{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13px;box-shadow:var(--shadow)}
+.flow i{color:var(--faint);font-style:normal}
+
+/* step cards */
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 28px 10px;margin-bottom:20px;box-shadow:var(--shadow)}
+.step header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.step header h3{margin:0;font-size:19px}
+.num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:13px;flex:none}
+.meta{margin:0 0 16px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.meta-row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--border)}
+.meta-row:last-child{border-bottom:0}
+.meta dt{background:var(--sunken);padding:8px 12px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.meta dd{margin:0;padding:8px 12px;font-size:13.5px}
+.meta dd p:last-child,.meta dd ul:last-child{margin-bottom:0}
+.note{border-left:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 8px 8px 0;margin:0 0 16px;font-size:14px}
+.note.warn{border-color:var(--you);background:var(--you-soft)}
+figure{margin:0 0 16px}
+figure a{display:block;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+.menu-btn{display:none}
+@media (max-width:900px){
+  .layout{display:block}
+  aside{position:fixed;inset:0 auto 0 0;width:84%;max-width:320px;background:var(--bg);z-index:20;transform:translateX(-100%);transition:transform .2s;box-shadow:var(--shadow)}
+  aside.open{transform:none}
+  main{padding:64px 16px 100px}
+  .menu-btn{display:block;position:fixed;top:12px;left:12px;z-index:21;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:600 13px -apple-system,sans-serif}
+  .step{padding:18px 16px 8px}
+  .meta-row{grid-template-columns:1fr}
+  .hero h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn">☰ Contents</button>
+<div class="layout">
+  <aside id="sidebar">
+    <a class="back" href="playbook.html">← Back to the Playbook</a>
+    <p class="brand">Setup Log</p>
+    <p class="brand-sub">First setup · Oct 25–26, 2026</p>
+    <nav><ul>
+      <li><a class="nav-ch" href="#big-picture">The big picture</a><ul>
+        <li><a href="#cast">Who's involved</a></li>
+        <li><a href="#accounts">Your accounts</a></li></ul></li>
+      <li><a class="nav-ch" href="#local">Part 1 · On your Mac</a><ul>
+        <li><a href="#s1">1 · Run the project</a></li>
+        <li><a href="#s2">2 · Choose a name</a></li>
+        <li><a href="#s3">3 · Make it yours</a></li>
+        <li><a href="#s4">4 · Start the history</a></li></ul></li>
+      <li><a class="nav-ch" href="#github">Part 2 · On GitHub</a><ul>
+        <li><a href="#s5">5 · Create the org</a></li>
+        <li><a href="#s6">6 · Push the repo</a></li>
+        <li><a href="#s7">7 · First CI run</a></li>
+        <li><a href="#s8">8 · Public + protect main</a></li>
+        <li><a href="#s9">9 · One commit identity</a></li>
+        <li><a href="#s10">10 · Teams</a></li></ul></li>
+      <li><a class="nav-ch" href="#chromatic">Part 3 · Visual review</a><ul>
+        <li><a href="#s11">11 · Connect Chromatic</a></li>
+        <li><a href="#s12">12 · First pull request</a></li>
+        <li><a href="#s13">13 · Read the PR page</a></li>
+        <li><a href="#s14">14 · Accept baselines</a></li>
+        <li><a href="#s15">15 · Squash and merge</a></li></ul></li>
+      <li><a class="nav-ch" href="#wrap">What it adds up to</a><ul>
+        <li><a href="#loop">The loop you rehearsed</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+        <li><a href="#open">Still open</a></li></ul></li>
+    </ul></nav>
+  </aside>
+  <main>
+    <div class="hero">
+      <h1>Setup Log: from a zip file to a working review flow</h1>
+      <p>Everything we did in the first setup session, in order. Each step says <strong>why</strong> we did it, <strong>who</strong> did it, and <strong>what you had to do</strong>. Read it once to understand the setup, then use the <a href="playbook.html">Playbook</a> recipes for day-to-day work.</p>
+      <div class="legend">
+        <span class="pill you">You</span>
+        <span class="pill claude">Claude</span>
+        <span class="pill auto">Automatic (GitHub / Chromatic)</span>
+      </div>
+    </div>
+
+    <!-- ───────────────────────── BIG PICTURE ───────────────────────── -->
+    <section class="chapter" id="big-picture">
+      <div class="ch-head"><span class="ch-num">Start here</span><h2>The big picture</h2>
+        <p class="ch-intro">What we were building, and who plays which role.</p></div>
+
+      <p>The goal of the session was <strong>not</strong> to design anything yet. It was to build the <strong>pipeline</strong> every future design-system change will travel through:</p>
+      <div class="flow">
+        <span>Change on a branch</span><i>→</i><span>Pull request</span><i>→</i><span>CI checks the code</span><i>→</i><span>Chromatic shows the visuals</span><i>→</i><span>You approve</span><i>→</i><span>Merge into <code>main</code></span>
+      </div>
+      <p>By the end, we had sent one real change through that whole pipeline (PR #1), so we know it works.</p>
+
+      <h3 id="cast">Who's involved</h3>
+      <table>
+        <thead><tr><th>Who / what</th><th>Role</th><th>Where</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill you">You</span></td><td>Design-system owner. You make the decisions, sign in to services, and approve visuals.</td><td>Browser, terminal</td></tr>
+          <tr><td><span class="pill claude">Claude</span></td><td>Does the repo and GitHub work through the terminal: edits files, runs commands, opens PRs.</td><td>Claude Code in VS Code</td></tr>
+          <tr><td><strong>GitHub</strong></td><td>The shared home for the code. Holds the org, the repo, teams, rules and pull requests.</td><td><a href="https://github.com/tawan-design/design-system">github.com/tawan-design/design-system</a></td></tr>
+          <tr><td><strong>GitHub Actions (CI)</strong></td><td>A robot that runs checks on every change: typecheck, token audit, build.</td><td>"Checks" on each PR</td></tr>
+          <tr><td><strong>Chromatic</strong></td><td>Publishes Storybook online and shows visual changes for a designer to accept or deny.</td><td>chromatic.com</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="accounts">Your accounts</h3>
+      <table>
+        <thead><tr><th>Name</th><th>What it is</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><code>tawanuiux-202</code></td><td>GitHub account</td><td><strong>Everything in this project.</strong> Owner of the org, signed in to the terminal (<code>gh</code>), author of commits.</td></tr>
+          <tr><td><code>tawan20219</code></td><td>Another GitHub account</td><td>Not used here. It only appears as author of the first 2 commits, before we fixed the identity (step 9).</td></tr>
+          <tr><td><code>tuananhd1910k@gmail.com</code></td><td>An email, not an account</td><td>Your global git email. This repo now uses a private GitHub address instead.</td></tr>
+          <tr><td><code>tawan-design</code></td><td>GitHub organization</td><td>Owns the repo, the teams and the package name <code>@tawan-design/ui</code>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ───────────────────────── PART 1 ───────────────────────── -->
+    <section class="chapter" id="local">
+      <div class="ch-head"><span class="ch-num">Part 1</span><h2>On your Mac</h2>
+        <p class="ch-intro">Get the project running and make it yours, before anything goes online.</p></div>
+
+      <article class="step" id="s1">
+        <header><span class="num">1</span><h3>Run the project</h3><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Prove the starter project works on your Mac <em>before</em> changing anything. If something breaks later, we know we caused it.</dd></div>
+          <div class="meta-row"><dt>What happened</dt><dd>Claude installed the dependencies (<code>pnpm install</code>) and started two local websites:
+            <ul><li><strong>Storybook</strong> at <code>localhost:6006</code>: the component docs.</li>
+            <li><strong>Playground</strong> at <code>localhost:5173</code>: a fake product built only from the system.</li></ul></dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Nothing. You just asked "help me run this project".</dd></div>
+        </dl>
+<pre><code>pnpm install      # first time only
+pnpm dev          # Storybook → localhost:6006
+pnpm playground   # Playground → localhost:5173</code></pre>
+      </article>
+
+      <article class="step" id="s2">
+        <header><span class="num">2</span><h3>Choose a name</h3><span class="pill you">You decide</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>The starter used a placeholder name, <code>@yourco</code>. Your packages need a real name (a <em>scope</em>), like <code>@tawan-design/ui</code>.</dd></div>
+          <div class="meta-row"><dt>The catch</dt><dd>GitHub Packages only lets you publish <code>@name/ui</code> if <code>name</code> is the GitHub org or user that owns the repo. <code>tawan</code> was already taken by someone else on GitHub, so we couldn't use it.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Picked <strong><code>tawan-design</code></strong> from the options. Claude checked that the name was free.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s3">
+        <header><span class="num">3</span><h3>Make it yours</h3><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Replace every <code>@yourco</code> with <code>@tawan-design</code>, so imports, docs and AI instructions all use your real name.</dd></div>
+          <div class="meta-row"><dt>What happened</dt><dd>
+            <ul><li>Renamed the scope in all files: code, docs, skills and <code>CODEOWNERS</code>.</li>
+            <li>Rebuilt the lockfile and <code>catalog.json</code> so they use the new name.</li>
+            <li>Ran <code>pnpm check</code> to confirm nothing broke. It passed.</li></ul></dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Nothing.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s4">
+        <header><span class="num">4</span><h3>Start the history</h3><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Turn the folder into a <strong>git repository</strong>, so every change is saved, can be reviewed and can be undone.</dd></div>
+          <div class="meta-row"><dt>What happened</dt><dd><code>git init</code>, then the first commit: <em>"chore: bootstrap Tawan design system"</em>. Claude checked that no junk (<code>node_modules</code>) or secrets were included.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Nothing.</dd></div>
+        </dl>
+      </article>
+    </section>
+
+    <!-- ───────────────────────── PART 2 ───────────────────────── -->
+    <section class="chapter" id="github">
+      <div class="ch-head"><span class="ch-num">Part 2</span><h2>On GitHub</h2>
+        <p class="ch-intro">Give the project a shared home, with rules about how changes get in.</p></div>
+
+      <article class="step" id="s5">
+        <header><span class="num">5</span><h3>Create the org</h3><span class="pill you">You</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>An <strong>organization</strong> is a shared space, not one person's account. It can have teams, several owners, and its own package name.</dd></div>
+          <div class="meta-row"><dt>Why you</dt><dd>GitHub doesn't let tools create organizations, only people in the browser.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Created <code>tawan-design</code> on the Free plan at github.com/organizations/plan.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s6">
+        <header><span class="num">6</span><h3>Push the repo</h3><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Upload the local history to GitHub, so it's backed up and others can work on it.</dd></div>
+          <div class="meta-row"><dt>What happened</dt><dd>Claude created <code>tawan-design/design-system</code>, pushed <code>main</code>, and turned on <strong>Discussions</strong> (used for RFCs, bigger proposals).</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Nothing.</dd></div>
+        </dl>
+<pre><code>gh repo create tawan-design/design-system --private --source=. --push</code></pre>
+      </article>
+
+      <article class="step" id="s7">
+        <header><span class="num">7</span><h3>First CI run, and a fix</h3><span class="pill auto">Automatic</span><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Every push runs <strong>CI</strong>, the robot checks. This was the first time CI ran.</dd></div>
+          <div class="meta-row"><dt>What happened</dt><dd>
+            <ul><li><strong>CI failed.</strong> The starter's <code>ci.yml</code> had a typo-level bug, so GitHub couldn't even read it. Claude fixed it, and CI turned green.</li>
+            <li><strong>Chromatic failed</strong> too, but that was expected: we hadn't connected it yet (step 11).</li></ul></dd></div>
+          <div class="meta-row"><dt>Lesson</dt><dd>A red check isn't scary. It's the system telling you what to fix, before the problem reaches a product.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s8">
+        <header><span class="num">8</span><h3>Make the repo public and protect <code>main</code></h3><span class="pill you">You</span><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd><strong>Branch protection</strong> stops anyone, including you, from changing <code>main</code> directly. Every change has to come through a pull request with passing checks.</dd></div>
+          <div class="meta-row"><dt>The catch</dt><dd>GitHub Free can't protect <em>private</em> repos. The options were to pay for the Team plan or make the repo public.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Made the repo <strong>public</strong> in GitHub settings.</dd></div>
+          <div class="meta-row"><dt>Claude did</dt><dd>Checked that no passwords or tokens were in the code, then set these rules on <code>main</code>:
+            <ul><li>✅ Changes must come through a PR</li>
+            <li>✅ CI must pass</li>
+            <li>✅ No force-push, no deleting <code>main</code></li>
+            <li>⏸ <strong>0 approvals required, Code Owners review off.</strong> You work alone for now, and GitHub won't let you approve your own PR. We switch these on when a second person joins.</li></ul></dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s9">
+        <header><span class="num">9</span><h3>One commit identity</h3><span class="pill you">You decide</span><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Two accounts were involved: <code>tawanuiux-202</code> pushed the commits, but GitHub credited them to <code>tawan20219</code> through your Gmail. One account makes the history clear.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Chose <code>tawanuiux-202</code> for everything.</dd></div>
+          <div class="meta-row"><dt>Claude did</dt><dd>Set <strong>this repo only</strong> to commit as <code>tawanuiux-202</code>, with GitHub's private no-reply email. Your Gmail no longer appears in the public history.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s10">
+        <header><span class="num">10</span><h3>Org permission and teams</h3><span class="pill you">You</span><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd><strong>Teams</strong> make the rules in <code>GOVERNANCE.md</code> real. <code>CODEOWNERS</code> says who must review what, using team names:
+            <ul><li><code>design-system</code> (Maintain): owns tokens, <code>DESIGN.md</code> and components.</li>
+            <li><code>frontend-leads</code> (Write): co-owns code quality.</li></ul>
+            GitHub then requests the right reviewers on every PR automatically.</dd></div>
+          <div class="meta-row"><dt>Why you</dt><dd>The terminal login could manage repos but not the org itself. You granted it one more permission, <code>admin:org</code>, by signing in through the browser.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Ran the command below, pressed Enter, made sure the browser was signed in as <code>tawanuiux-202</code>, pasted the one-time code, then clicked Authorize.</dd></div>
+          <div class="meta-row"><dt>Claude did</dt><dd>Created both teams, gave them access to the repo, and checked that <code>CODEOWNERS</code> has no errors.</dd></div>
+        </dl>
+<pre><code>gh auth refresh -h github.com -s admin:org</code></pre>
+        <figure>
+          <a href="images/setup/01-gh-auth-refresh.png"><img src="images/setup/01-gh-auth-refresh.png" alt="Terminal asking to press Enter to open github.com/login/device with a one-time code copied to the clipboard" loading="lazy"></a>
+          <figcaption>The terminal gives a one-time code and opens the browser. The code expires after use.</figcaption>
+        </figure>
+        <p class="note"><strong>Are you limited to "Maintain" or "Write"?</strong> No. As the org <strong>owner</strong>, you're <strong>admin</strong> on every repo. Team permissions only matter for people you add later.</p>
+      </article>
+    </section>
+
+    <!-- ───────────────────────── PART 3 ───────────────────────── -->
+    <section class="chapter" id="chromatic">
+      <div class="ch-head"><span class="ch-num">Part 3</span><h2>Visual review</h2>
+        <p class="ch-intro">Connect Chromatic, then send the first real change through the whole flow.</p></div>
+
+      <article class="step" id="s11">
+        <header><span class="num">11</span><h3>Connect Chromatic</h3><span class="pill you">You</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Chromatic is your <strong>design-review tool</strong>. On every PR, it publishes Storybook online and shows <em>before/after images</em> of each component. You approve visuals without reading code.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>
+            <ol><li>Signed in to chromatic.com with GitHub (<code>tawanuiux-202</code>) and added the repo.</li>
+            <li>Chose <strong>Storybook</strong> as the project type, because this repo already has Storybook.</li>
+            <li>On the "Publish" screen, ran <strong>neither</strong> command. You only copied the <strong>project token</strong> (<code>chpt_…</code>).</li>
+            <li>Saved the token as a GitHub <strong>secret</strong> in your terminal (command below).</li></ol></dd></div>
+          <div class="meta-row"><dt>Why you saved the secret</dt><dd>Claude Code isn't allowed to write secrets without your explicit permission. This is a safety rule, and it's a good one.</dd></div>
+          <div class="meta-row"><dt>What a secret is</dt><dd>A value GitHub stores encrypted and only gives to the CI robot. It never appears in the code, even in a public repo.</dd></div>
+        </dl>
+        <figure>
+          <a href="images/setup/03-chromatic-project-type.png"><img src="images/setup/03-chromatic-project-type.png" alt="Chromatic asking what kind of project this is: Storybook, Vitest, Playwright or Cypress" loading="lazy"></a>
+          <figcaption>Pick <strong>Storybook</strong>. Ignore "Copy this prompt", which is for projects without Storybook.</figcaption>
+        </figure>
+        <figure>
+          <a href="images/setup/04-chromatic-publish.png"><img src="images/setup/04-chromatic-publish.png" alt="Chromatic publish screen showing npm install and npx chromatic commands, with the project token hidden" loading="lazy"></a>
+          <figcaption><strong>Don't run these commands.</strong> GitHub publishes for you from the right folder. Copy only the token. (Token hidden in this screenshot.)</figcaption>
+        </figure>
+<pre><code>gh secret set CHROMATIC_PROJECT_TOKEN -R tawan-design/design-system
+# paste the chpt_… token when asked</code></pre>
+        <p class="note warn"><strong>Treat the token like a key.</strong> Don't paste it in chats, screenshots or files. If it leaks, regenerate it in Chromatic (Manage → Configure) and save it again with the command above.</p>
+      </article>
+
+      <article class="step" id="s12">
+        <header><span class="num">12</span><h3>The first pull request</h3><span class="pill claude">Claude</span><span class="pill auto">Automatic</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Test the real flow end to end, this time <em>with</em> the protection rules on.</dd></div>
+          <div class="meta-row"><dt>What happened</dt><dd>
+            <ul><li>Chromatic's first upload failed: the starter's workflow never <em>built</em> Storybook before uploading it.</li>
+            <li>Because <code>main</code> is protected, Claude couldn't fix it directly. Claude made a <strong>branch</strong> (<code>fix/chromatic-build</code>), committed the fix and opened <strong>PR #1</strong>.</li>
+            <li>CI and Chromatic ran automatically on the PR. Both passed, and 16 stories were published.</li></ul></dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Nothing yet. Your part comes in steps 14–15.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s13">
+        <header><span class="num">13</span><h3>Read the PR page</h3><span class="pill you">You</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>A PR page is a <strong>proposal to change the system</strong>, with everything you need to decide: what changed, whether the checks passed, and who should review.</dd></div>
+        </dl>
+        <figure>
+          <a href="images/setup/05-pr-top.png"><img src="images/setup/05-pr-top.png" alt="Top of pull request #1: title, branch names, tabs, description and reviewers" loading="lazy"></a>
+          <figcaption>Top of the PR page.</figcaption>
+        </figure>
+        <table>
+          <thead><tr><th>Part of the page</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Title and #1</strong></td><td>The name of the proposal. It's PR number 1.</td></tr>
+            <tr><td><code>fix/chromatic-build</code> → <code>main</code></td><td>The change was made on a side copy (a <em>branch</em>). Merging copies it into <code>main</code>, the official version.</td></tr>
+            <tr><td>Tabs</td><td><strong>Conversation</strong> = discussion · <strong>Commits</strong> = saved steps · <strong>Checks</strong> = robot tests · <strong>Files changed</strong> = the actual edits (red = removed, green = added).</td></tr>
+            <tr><td>Description box</td><td>The author explains <em>why</em> the change exists.</td></tr>
+            <tr><td>Reviewers 🟠</td><td>GitHub asked your two teams to review, automatically because of <code>CODEOWNERS</code>. The orange dot means "not reviewed yet". It isn't required right now.</td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <a href="images/setup/06-pr-checks.png"><img src="images/setup/06-pr-checks.png" alt="Merge box of pull request #1: review requested, one pending check (UI Tests), three successful checks, no conflicts, Merge button" loading="lazy"></a>
+          <figcaption>The merge box. Read it like a checklist.</figcaption>
+        </figure>
+        <table>
+          <thead><tr><th>Line</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>✅ Review requested, not required</td><td>Nobody has to approve yet.</td></tr>
+            <tr><td>✅ <strong>CI / check</strong>, marked <em>Required</em></td><td>Typecheck, token audit and build passed. This is the only check that <strong>blocks</strong> merging.</td></tr>
+            <tr><td>✅ Storybook preview + visual review</td><td>The job that builds and uploads Storybook worked.</td></tr>
+            <tr><td>✅ Storybook Publish, 16 stories</td><td>Your Storybook is online in Chromatic.</td></tr>
+            <tr><td>🟠 <strong>UI Tests</strong>: 16 changes must be accepted</td><td><strong>Waiting for you, the designer.</strong> To open it: <code>•••</code> at the end of the row → View details.</td></tr>
+            <tr><td>✅ No conflicts with base branch</td><td>Nothing clashes with <code>main</code>.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="step" id="s14">
+        <header><span class="num">14</span><h3>Accept the baselines</h3><span class="pill you">You</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>A <strong>baseline</strong> is the approved "this is correct" image of each story. On every future PR, Chromatic compares the new images to the baseline and shows you only what changed.</dd></div>
+          <div class="meta-row"><dt>Why it was waiting</dt><dd>It was the first build, so there was nothing to compare against. Someone had to say "today's look is correct".</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>Opened UI Tests in Chromatic, looked at the 16 stories and clicked <strong>Accept all</strong>. The check turned ✅.</dd></div>
+          <div class="meta-row"><dt>From now on</dt><dd>This is <strong>your main job in review</strong>: open UI Tests, compare before/after, then <em>accept</em> intended changes and <em>deny</em> mistakes.</dd></div>
+        </dl>
+      </article>
+
+      <article class="step" id="s15">
+        <header><span class="num">15</span><h3>Squash and merge</h3><span class="pill you">You</span><span class="pill claude">Claude</span></header>
+        <dl class="meta">
+          <div class="meta-row"><dt>Intent</dt><dd>Put the approved change into <code>main</code>. <strong>Squash</strong> combines the PR into one clean commit, which keeps the history easy to read.</dd></div>
+          <div class="meta-row"><dt>You did</dt><dd>▾ next to "Merge pull request" → <strong>Squash and merge</strong> → Confirm.</dd></div>
+          <div class="meta-row"><dt>Claude did</dt><dd>Updated your local copy to the new <code>main</code> and deleted the finished branch.</dd></div>
+        </dl>
+        <figure>
+          <a href="images/setup/07-pr-merged.png"><img src="images/setup/07-pr-merged.png" alt="Pull request #1 shown as Merged, with 4 checks passed" loading="lazy"></a>
+          <figcaption>Purple <strong>Merged</strong> badge and "4 checks passed". The pipeline works end to end.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- ───────────────────────── WRAP ───────────────────────── -->
+    <section class="chapter" id="wrap">
+      <div class="ch-head"><span class="ch-num">Wrap-up</span><h2>What it adds up to</h2>
+        <p class="ch-intro">The flow you rehearsed is the one every future change will follow.</p></div>
+
+      <h3 id="loop">The loop you just rehearsed</h3>
+      <table>
+        <thead><tr><th>#</th><th>Step</th><th>Who</th><th>What you see</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Make the change on a branch</td><td><span class="pill claude">Claude</span> or an engineer</td><td>Nothing yet</td></tr>
+          <tr><td>2</td><td>Open a pull request</td><td><span class="pill claude">Claude</span></td><td>A PR link</td></tr>
+          <tr><td>3</td><td>CI checks the code</td><td><span class="pill auto">Automatic</span></td><td>✅ or ❌ "check"</td></tr>
+          <tr><td>4</td><td>Chromatic publishes and compares</td><td><span class="pill auto">Automatic</span></td><td>🟠 UI Tests if visuals changed</td></tr>
+          <tr><td>5</td><td>Review visuals: accept or deny</td><td><span class="pill you">You</span></td><td>Before/after images in Chromatic</td></tr>
+          <tr><td>6</td><td>Squash and merge</td><td><span class="pill you">You</span></td><td>Purple "Merged"</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="glossary">Glossary</h3>
+      <table>
+        <thead><tr><th>Word</th><th>Plain meaning</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Repository (repo)</strong></td><td>The project folder plus its full history.</td></tr>
+          <tr><td><strong>Commit</strong></td><td>One saved step in the history, with a message saying what changed.</td></tr>
+          <tr><td><strong>Branch</strong></td><td>A side copy where you make changes without touching the official version.</td></tr>
+          <tr><td><strong><code>main</code></strong></td><td>The official branch. What's in <code>main</code> is the real design system.</td></tr>
+          <tr><td><strong>Pull request (PR)</strong></td><td>A proposal to move a branch's changes into <code>main</code>, with review and checks.</td></tr>
+          <tr><td><strong>Merge / Squash</strong></td><td>Accept a PR into <code>main</code>. Squash makes it one tidy commit.</td></tr>
+          <tr><td><strong>CI / check</strong></td><td>The robot tests that run on every PR.</td></tr>
+          <tr><td><strong>Branch protection</strong></td><td>Rules that stop changes reaching <code>main</code> without a PR and passing checks.</td></tr>
+          <tr><td><strong>Organization (org)</strong></td><td>A shared GitHub space with members, teams and repos.</td></tr>
+          <tr><td><strong>Team / CODEOWNERS</strong></td><td>Groups of people, and the file that says which group reviews which files.</td></tr>
+          <tr><td><strong>Scope</strong></td><td>The first part of a package name, like <code>@tawan-design</code> in <code>@tawan-design/ui</code>.</td></tr>
+          <tr><td><strong>Token (access)</strong></td><td>A password for a robot. Different from <em>design</em> tokens!</td></tr>
+          <tr><td><strong>Secret</strong></td><td>An access token stored encrypted in GitHub, for CI only.</td></tr>
+          <tr><td><strong>Baseline</strong></td><td>The approved image of a story that Chromatic compares new versions against.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="open">Still open</h3>
+      <table>
+        <thead><tr><th>To do</th><th>Who</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td>Add an "RFC" category in Discussions (⚙️ → New category)</td><td><span class="pill you">You</span></td><td>Anytime, 1 minute</td></tr>
+          <tr><td>Connect Figma: type <code>/mcp</code> in Claude Code → figma → sign in</td><td><span class="pill you">You</span></td><td>Before foundations</td></tr>
+          <tr><td>Turn on Code Owners review and 1 required approval</td><td><span class="pill claude">Claude</span></td><td>When a second person joins</td></tr>
+          <tr><td><strong>Next chapter: create the foundations</strong> (<a href="playbook.html#recipe-A">Recipe A</a>)</td><td><span class="pill you">You</span> + <span class="pill claude">Claude</span></td><td>Next session</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+<script>
+  const sb = document.getElementById('sidebar');
+  document.getElementById('menuBtn').addEventListener('click', () => sb.classList.toggle('open'));
+  sb.querySelectorAll('a').forEach(a => a.addEventListener('click', () => sb.classList.remove('open')));
+</script>
+</body>
+</html>
