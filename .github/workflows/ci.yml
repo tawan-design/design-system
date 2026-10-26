@@ -18,4 +18,5 @@ jobs:
       - name: Build everything (tokens, ui, Storybook, playground)
         run: pnpm build
       - name: Catalog is up to date
-        run: git diff --exit-code packages/ui/catalog.json || (echo "Run: pnpm --filter @tawan-design/ui catalog" && exit 1)
+        run: |
+          git diff --exit-code packages/ui/catalog.json || (echo "Run: pnpm --filter @tawan-design/ui catalog" && exit 1)
