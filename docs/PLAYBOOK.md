@@ -56,6 +56,8 @@ Owner: Design team · Repo: `design-system` · Last updated: 2026-10-25
 
 Do this once. ~1–2 hours.
 
+> **Setup Log:** [`setup-log.html`](setup-log.html) records how this repo was actually set up (Oct 25–26, 2026), with the intent, who, and screenshots for each step.
+
 ### 2.1 Accounts and tools
 
 | Tool | Why | Setup |
