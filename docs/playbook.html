@@ -333,7 +333,7 @@ pnpm install
 pnpm dev                     # Storybook opens at localhost:6006 ✔
 
 # 2. Personalize
-#    find/replace &quot;@yourco&quot; → your GitHub org (done here: @tawan-design)
+#    find/replace &quot;@yourco&quot; → your GitHub org (e.g. @boole)
 
 # 3. Push
 git init &amp;&amp; git add -A &amp;&amp; git commit -m &quot;chore: bootstrap design system&quot;
@@ -538,14 +538,14 @@ Draft the DS-GAP issues but ask me before creating them.
 </code></pre>
 <p><strong>What you get:</strong> one section per screen (component + props table, layout as token classes, states, responsive, copy, accessibility, the DESIGN.md rule that applies), then DS-GAPs and open questions.</p>
 <p><strong>Output:</strong> handoff spec (per screen) + DS-GAP list → issues
-<strong>Done when:</strong> ☐ zero detached layers ☐ every element mapped to a catalog component or a DS-GAP ☐ edge states covered</p></article><article class="recipe" id="recipe-H"><header><span class="badge"><a class="rlink" href="#recipe-H">Recipe H</a></span><h3>Engineer (or designer) builds a feature with the DS</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Product code that uses the DS correctly the first time</dd></div><div class="meta-row"><dt>Who</dt><dd>Frontend engineer (or designer prototyping in the playground)</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code in the <strong>product</strong> repo (or <code>apps/playground</code> here)</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Handoff spec · Figma URL · the product repo with <code>@tawan-design/ui</code> installed</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-build-screen</code> · ✅ <code>ds-audit</code> · ✅ <code>ds-design-qa</code></dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
+<strong>Done when:</strong> ☐ zero detached layers ☐ every element mapped to a catalog component or a DS-GAP ☐ edge states covered</p></article><article class="recipe" id="recipe-H"><header><span class="badge"><a class="rlink" href="#recipe-H">Recipe H</a></span><h3>Engineer (or designer) builds a feature with the DS</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Product code that uses the DS correctly the first time</dd></div><div class="meta-row"><dt>Who</dt><dd>Frontend engineer (or designer prototyping in the playground)</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code in the <strong>product</strong> repo (or <code>apps/playground</code> here)</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd>Handoff spec · Figma URL · the product repo with <code>@yourco/ui</code> installed</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-build-screen</code> · ✅ <code>ds-audit</code> · ✅ <code>ds-design-qa</code></dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
 
 <h4>One-time in each product repo</h4>
-<pre><code class="language-bash">pnpm add @tawan-design/ui                         # from GitHub Packages
-# app root: import &quot;@tawan-design/ui/styles.css&quot;;
+<pre><code class="language-bash">pnpm add @yourco/ui                         # from GitHub Packages
+# app root: import &quot;@yourco/ui/styles.css&quot;;
 </code></pre>
 <p>Then add to that repo's <code>AGENTS.md</code> / <code>CLAUDE.md</code>:</p>
-<pre><code>@tawan-design/ui is installed. Before writing UI, read node_modules/@tawan-design/ui/catalog.json.
+<pre><code>@yourco/ui is installed. Before writing UI, read node_modules/@yourco/ui/catalog.json.
 Use its components before building anything new. Token classes only. Ask instead of guessing.
 </code></pre>
 <p>(Copy <code>ds-build-screen</code> into that repo's <code>.claude/skills/</code> too.)</p>
@@ -565,7 +565,7 @@ When done: run the checks, then run ds-audit on the new files and give me the sc
 <li>Announce (Slack/Notion): what's new, breaking changes, how to upgrade.</li>
 </ol>
 <p><strong>Sample prompt (announcement)</strong></p>
-<pre class="prompt"><code>Read CHANGELOG.md for @tawan-design/ui &lt;version&gt;. Write a short release note for designers and
+<pre class="prompt"><code>Read CHANGELOG.md for @yourco/ui &lt;version&gt;. Write a short release note for designers and
 engineers: new components, changes, breaking changes with migration steps, link to Storybook.
 </code></pre></article><article class="recipe" id="recipe-K"><header><span class="badge"><a class="rlink" href="#recipe-K">Recipe K</a></span><h3>Monthly health check: is the agent really using our DS?</h3></header><dl class="meta"><div class="meta-row"><dt>Goal</dt><dd>Measure adoption, find the missing sentences in the docs, track the trend</dd></div><div class="meta-row"><dt>Who</dt><dd>DS owner (30–60 min/month)</dd></div><div class="meta-row"><dt>Where</dt><dd>Claude Code in the DS repo</dd></div><div class="meta-row"><dt>Attach / provide</dt><dd><code>evals/prompts/*</code> · last month's <code>evals/results.md</code> · Figma DS file URL</dd></div><div class="meta-row"><dt>Skills</dt><dd>✅ <code>ds-audit</code> · ✅ <code>ds-drift-check</code> (+ script <code>pnpm catalog:summary</code>)</dd></div><div class="meta-row"><dt>Connectors</dt><dd>Figma</dd></div></dl>
 
@@ -668,7 +668,7 @@ Save the report to evals/drift/&lt;today&gt;.md and draft issues for the High it
 <td>Typecheck + raw-value audit (the same as CI)</td>
 </tr>
 <tr>
-<td><code>pnpm --filter @tawan-design/ui catalog</code></td>
+<td><code>pnpm --filter @yourco/ui catalog</code></td>
 <td>Regenerates <code>catalog.json</code></td>
 </tr>
 <tr>

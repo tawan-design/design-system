@@ -18,11 +18,12 @@ jobs:
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile
       - run: pnpm tokens
+      # storybookBuildDir makes Chromatic skip building, so build here first.
+      - run: pnpm --filter docs build
       - uses: chromaui/action@v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/docs
-          buildScriptName: build
           storybookBuildDir: storybook-static
           exitZeroOnChanges: true   # changes go to review, they don't fail the build
           onlyChanged: true

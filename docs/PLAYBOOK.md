@@ -100,7 +100,7 @@ pnpm install
 pnpm dev                     # Storybook opens at localhost:6006 ✔
 
 # 2. Personalize
-#    find/replace "@yourco" → your GitHub org (done here: @tawan-design)
+#    find/replace "@yourco" → your GitHub org (e.g. @boole)
 
 # 3. Push
 git init && git add -A && git commit -m "chore: bootstrap design system"
@@ -415,18 +415,18 @@ Draft the DS-GAP issues but ask me before creating them.
 | **Goal** | Product code that uses the DS correctly the first time |
 | **Who** | Frontend engineer (or designer prototyping in the playground) |
 | **Where** | Claude Code in the **product** repo (or `apps/playground` here) |
-| **Attach / provide** | Handoff spec · Figma URL · the product repo with `@tawan-design/ui` installed |
+| **Attach / provide** | Handoff spec · Figma URL · the product repo with `@yourco/ui` installed |
 | **Skills** | ✅ `ds-build-screen` · ✅ `ds-audit` · ✅ `ds-design-qa` |
 | **Connectors** | Figma |
 
 **One-time in each product repo**
 ```bash
-pnpm add @tawan-design/ui                         # from GitHub Packages
-# app root: import "@tawan-design/ui/styles.css";
+pnpm add @yourco/ui                         # from GitHub Packages
+# app root: import "@yourco/ui/styles.css";
 ```
 Then add to that repo's `AGENTS.md` / `CLAUDE.md`:
 ```
-@tawan-design/ui is installed. Before writing UI, read node_modules/@tawan-design/ui/catalog.json.
+@yourco/ui is installed. Before writing UI, read node_modules/@yourco/ui/catalog.json.
 Use its components before building anything new. Token classes only. Ask instead of guessing.
 ```
 (Copy `ds-build-screen` into that repo's `.claude/skills/` too.)
@@ -480,7 +480,7 @@ existing variables. No raw values. Then add the Code Connect mapping.
 
 **Sample prompt (announcement)**
 ```
-Read CHANGELOG.md for @tawan-design/ui <version>. Write a short release note for designers and
+Read CHANGELOG.md for @yourco/ui <version>. Write a short release note for designers and
 engineers: new components, changes, breaking changes with migration steps, link to Storybook.
 ```
 
@@ -546,7 +546,7 @@ Save the report to evals/drift/<today>.md and draft issues for the High items (a
 | `pnpm playground` | Simulated product (localhost:5173) |
 | `pnpm tokens` | Rebuilds CSS variables from token JSON |
 | `pnpm check` | Typecheck + raw-value audit (the same as CI) |
-| `pnpm --filter @tawan-design/ui catalog` | Regenerates `catalog.json` |
+| `pnpm --filter @yourco/ui catalog` | Regenerates `catalog.json` |
 | `pnpm changeset` | Describe your change (patch/minor/major) |
 | `npx figma connect publish` | Publishes Code Connect snippets to Figma Dev Mode |
 | `pnpm qa:snapshot <url> --name x --theme both` | Built-UI side of design QA (screenshots + tokens per element) |
