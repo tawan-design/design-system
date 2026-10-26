@@ -21,7 +21,7 @@ The built UI must be running (`pnpm dev` or `pnpm playground`). For a Storybook 
 For the frame node:
 1. `get_metadata`: layer tree, component instances (main component name + variant properties), sizes.
 2. `get_design_context`: layout (auto-layout gaps, padding), styles, bound variables.
-3. `get_variable_defs`: variables used, by name (`bg/surface`, `space/16`…).
+3. `get_variable_defs`: variables used, by name (`surface-primary`, `space-16`…).
 4. `get_screenshot`: save it as `qa-output/<name>/figma.png`.
 
 Write down a **Figma inventory**: each instance → `{component, variant props, text, size}`, plus frame-level gaps and padding.
@@ -33,17 +33,17 @@ node scripts/qa-snapshot.mjs "<built URL>" --name <name> --viewport <W>x<H> --th
 ```
 It writes `qa-output/<name>/`:
 - `screenshot-<theme>.png`
-- `snapshot-<theme>.json`: `dsComponents` (counts of `data-ds` roots), `handRolled` (buttons/inputs/dialogs not from the DS), `rawValues` (computed values that match no token), and `elements[]` with each element's box and **reverse-mapped tokens** (`--ds-color-bg-surface`, `--ds-space-16`…)
+- `snapshot-<theme>.json`: `dsComponents` (counts of `data-ds` roots), `handRolled` (buttons/inputs/dialogs not from the DS), `rawValues` (computed values that match no token), and `elements[]` with each element's box and **reverse-mapped tokens** (`--surface-primary`, `--space-16`…)
 - `summary-<theme>.md`
 
-Token name mapping: Figma `bg/surface` = CSS `--ds-color-bg-surface` = class `bg-surface`. Figma `space/16` = `--ds-space-16` = `p-16`/`gap-16`.
+Token name mapping: Figma `surface-primary` = CSS `--surface-primary` = class `bg-surface-primary`. Figma `space-16` = `--space-16` = `p-16`/`gap-16`. Names are never translated.
 
 ## Step 3: Compare and score
 
 | # | Check | Weight | How |
 |---|---|---|---|
 | 1 | **Components** | 25 | Every Figma instance has the same DS component in `dsComponents` (match by name). −5 per missing or substituted component, −5 per `handRolled` item |
-| 2 | **Variants & props** | 20 | Figma variant properties vs rendered result (e.g. Figma `Variant=Secondary` → button has secondary tokens: `bg-surface` + `border-default`). −4 per mismatch |
+| 2 | **Variants & props** | 20 | Figma variant properties vs rendered result (e.g. Figma `Variant=Secondary` → button has its Figma tokens, e.g. `action-neutral-subtle` + `border-default`). −4 per mismatch |
 | 3 | **Tokens** | 30 | For each element, compare Figma variable names with the reverse-mapped tokens. −3 per wrong token, −3 per `RAW` value |
 | 4 | **Layout & spacing** | 15 | Auto-layout gap/padding vs `gap`/`padding` tokens; element sizes within ±2px; same order and alignment. −3 per mismatch |
 | 5 | **Visual** | 10 | Look at `figma.png` vs `screenshot-<theme>.png` side by side: hierarchy, alignment, anything missing or extra. Deduct by judgment, explain each |
@@ -71,7 +71,7 @@ Score: 86/100 (light 91 · dark 86)  ✅ ≥90 pass · ⚠️ 75–89 fix before
 | # | Element | Figma | Built | Fix in | Suggested fix |
 |---|---|---|---|---|---|
 | 1 | "View all" button | Variant=Secondary | ghost tokens | Code | `variant="secondary"` in Dashboard.tsx |
-| 2 | Card padding | space/24 | --ds-space-20 | Figma? | DESIGN.md says p-20 for cards: confirm with designer |
+| 2 | Card padding | space-24 | --space-20 | Figma? | DESIGN.md says p-20 for cards: confirm with designer |
 
 ## Design-side issues (Figma)
 - Detached layers / unbound values found in the frame

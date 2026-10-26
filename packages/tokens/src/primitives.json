@@ -1,75 +1,1861 @@
 {
-  "$description": "Raw palette and scales. Exported from Figma Variables (collection: Primitives). Do not hand-edit — run the ds-tokens-sync skill.",
-  "color": {
-    "$type": "color",
+  "$description": "Generated from Figma Variables (TAWAN DESIGN SYSTEM). Do not hand-edit: run the ds-tokens-sync skill.",
+  "color-primitives": {
     "neutral": {
-      "0":   { "$value": "#ffffff" },
-      "50":  { "$value": "#f7f8fa" },
-      "100": { "$value": "#eef0f4" },
-      "200": { "$value": "#dde1e8" },
-      "400": { "$value": "#9aa3b2" },
-      "600": { "$value": "#5b6576" },
-      "800": { "$value": "#2a3140" },
-      "900": { "$value": "#161b26" },
-      "950": { "$value": "#0d1118" }
+      "0": {
+        "$type": "color",
+        "$value": "#ffffff",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/0",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-0"
+          }
+        }
+      },
+      "5": {
+        "$type": "color",
+        "$value": "#f8fafc",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/5",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-5"
+          }
+        }
+      },
+      "10": {
+        "$type": "color",
+        "$value": "#f1f5f9",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#dce1f4",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#bcc2e8",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#99a0ca",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-40"
+          }
+        }
+      },
+      "45": {
+        "$type": "color",
+        "$value": "#7e84ad",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/45",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-45"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#5c6087",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#42435c",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#2a2b38",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#20202b",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#16161b",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#111114",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-95"
+          }
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#000000",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/100",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-100"
+          }
+        }
+      }
     },
-    "blue": {
-      "100": { "$value": "#e3ebff" },
-      "300": { "$value": "#8fb0ff" },
-      "500": { "$value": "#3d6dff" },
-      "600": { "$value": "#2a55e6" },
-      "700": { "$value": "#1f42b8" }
+    "brand": {
+      "10": {
+        "$type": "color",
+        "$value": "#eeedff",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#cecaf7",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#ada6ef",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#7c7fdf",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-40"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#6265d9",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#5a51c5",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#4e45ab",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#413994",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#2d266e",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#181349",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-95"
+          }
+        }
+      }
     },
-    "red": {
-      "100": { "$value": "#ffe5e5" },
-      "400": { "$value": "#ff7a7a" },
-      "600": { "$value": "#d92d2d" }
+    "success": {
+      "10": {
+        "$type": "color",
+        "$value": "#ecfdf3",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#d1fadf",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#a6f4c5",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#6ce9a6",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-40"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#32d583",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#12b76a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#039855",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#027a48",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#05603a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#053924",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-95"
+          }
+        }
+      }
     },
-    "green": {
-      "100": { "$value": "#ddf6e6" },
-      "400": { "$value": "#4cc77c" },
-      "600": { "$value": "#1d8a4a" }
+    "warning": {
+      "10": {
+        "$type": "color",
+        "$value": "#fffaeb",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#fef0c7",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#fedf89",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#fec84b",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-40"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#fdb022",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#f79009",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#dc6803",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#b54708",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#93370d",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#471b09",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-95"
+          }
+        }
+      }
+    },
+    "danger": {
+      "10": {
+        "$type": "color",
+        "$value": "#fef3f2",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#fee4e2",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#fecdca",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#fda29b",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-40"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#f97066",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#f04438",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#d92d20",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#b42318",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#7d1b14",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#4c0d0d",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-95"
+          }
+        }
+      }
+    },
+    "info": {
+      "10": {
+        "$type": "color",
+        "$value": "#f0f9ff",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#e0f2fe",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#bae6fd",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#7dd3fc",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-40"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#38bdf8",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#0ea5e9",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#0284c7",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#0369a1",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#075985",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#0b345a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-95"
+          }
+        }
+      }
+    },
+    "opacity": {
+      "black-0": {
+        "$type": "color",
+        "$value": "#02061700",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-0",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-0"
+          }
+        }
+      },
+      "black-4": {
+        "$type": "color",
+        "$value": "#0206170a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-4",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-4"
+          }
+        }
+      },
+      "black-8": {
+        "$type": "color",
+        "$value": "#02061714",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-8",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-8"
+          }
+        }
+      },
+      "black-12": {
+        "$type": "color",
+        "$value": "#0206171f",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-12",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-12"
+          }
+        }
+      },
+      "black-24": {
+        "$type": "color",
+        "$value": "#0206173d",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-24",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-24"
+          }
+        }
+      },
+      "black-48": {
+        "$type": "color",
+        "$value": "#0206177a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-48",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-48"
+          }
+        }
+      },
+      "black-72": {
+        "$type": "color",
+        "$value": "#020617b8",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/black-72",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-black-72"
+          }
+        }
+      },
+      "white-0": {
+        "$type": "color",
+        "$value": "#f8fafc00",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/white-0",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-white-0"
+          }
+        }
+      },
+      "white-4": {
+        "$type": "color",
+        "$value": "#f8fafc0a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/white-4",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-white-4"
+          }
+        }
+      },
+      "white-8": {
+        "$type": "color",
+        "$value": "#f8fafc14",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/white-8",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-white-8"
+          }
+        }
+      },
+      "white-12": {
+        "$type": "color",
+        "$value": "#f8fafc1f",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/white-12",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-white-12"
+          }
+        }
+      },
+      "white-24": {
+        "$type": "color",
+        "$value": "#f8fafc3d",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/white-24",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-white-24"
+          }
+        }
+      },
+      "white-30": {
+        "$type": "color",
+        "$value": "#f8fafc4d",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/white-30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-white-30"
+          }
+        }
+      },
+      "brand-8": {
+        "$type": "color",
+        "$value": "#5a51c514",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-8",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-8"
+          }
+        }
+      },
+      "brand-10": {
+        "$type": "color",
+        "$value": "#5a51c51a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-10"
+          }
+        }
+      },
+      "brand-20": {
+        "$type": "color",
+        "$value": "#5a51c533",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-20"
+          }
+        }
+      },
+      "brand-40": {
+        "$type": "color",
+        "$value": "#5a51c566",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-40"
+          }
+        }
+      }
     }
   },
-  "space": {
-    "$type": "dimension",
-    "2":  { "$value": "2px" },
-    "4":  { "$value": "4px" },
-    "8":  { "$value": "8px" },
-    "12": { "$value": "12px" },
-    "16": { "$value": "16px" },
-    "20": { "$value": "20px" },
-    "24": { "$value": "24px" },
-    "32": { "$value": "32px" },
-    "40": { "$value": "40px" },
-    "48": { "$value": "48px" },
-    "64": { "$value": "64px" }
-  },
-  "radius": {
-    "$type": "dimension",
-    "8":    { "$value": "8px" },
-    "12":   { "$value": "12px" },
-    "full": { "$value": "9999px" }
-  },
-  "font": {
-    "family": {
-      "$type": "fontFamily",
-      "sans": { "$value": "Inter, ui-sans-serif, system-ui, sans-serif" }
+  "foundation-primitives": {
+    "spacing": {
+      "0": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/0",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-0"
+          }
+        }
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": "2px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/2",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-2"
+          }
+        }
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/4",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-4"
+          }
+        }
+      },
+      "6": {
+        "$type": "dimension",
+        "$value": "6px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/6",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-6"
+          }
+        }
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/8",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-8"
+          }
+        }
+      },
+      "10": {
+        "$type": "dimension",
+        "$value": "10px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-10"
+          }
+        }
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/12",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-12"
+          }
+        }
+      },
+      "14": {
+        "$type": "dimension",
+        "$value": "14px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/14",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-14"
+          }
+        }
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/16",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-16"
+          }
+        }
+      },
+      "20": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-20"
+          }
+        }
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/24",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-24"
+          }
+        }
+      },
+      "32": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/32",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-32"
+          }
+        }
+      },
+      "40": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-40"
+          }
+        }
+      },
+      "48": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/48",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-48"
+          }
+        }
+      },
+      "64": {
+        "$type": "dimension",
+        "$value": "64px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/64",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-64"
+          }
+        }
+      },
+      "80": {
+        "$type": "dimension",
+        "$value": "80px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-80"
+          }
+        }
+      },
+      "96": {
+        "$type": "dimension",
+        "$value": "96px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/spacing/96",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-spacing-96"
+          }
+        }
+      }
+    },
+    "radius": {
+      "0": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/0",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-0"
+          }
+        }
+      },
+      "1": {
+        "$type": "dimension",
+        "$value": "1px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/1",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-1"
+          }
+        }
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": "2px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/2",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-2"
+          }
+        }
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/4",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-4"
+          }
+        }
+      },
+      "6": {
+        "$type": "dimension",
+        "$value": "6px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/6",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-6"
+          }
+        }
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/8",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-8"
+          }
+        }
+      },
+      "10": {
+        "$type": "dimension",
+        "$value": "10px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-10"
+          }
+        }
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/12",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-12"
+          }
+        }
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/16",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-16"
+          }
+        }
+      },
+      "20": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-20"
+          }
+        }
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/24",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-24"
+          }
+        }
+      },
+      "32": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/32",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-32"
+          }
+        }
+      },
+      "full": {
+        "$type": "dimension",
+        "$value": "9999px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/radius/full",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-radius-full"
+          }
+        }
+      }
     },
     "size": {
-      "$type": "dimension",
-      "12": { "$value": "12px" },
-      "14": { "$value": "14px" },
-      "16": { "$value": "16px" },
-      "20": { "$value": "20px" },
-      "24": { "$value": "24px" },
-      "32": { "$value": "32px" }
+      "12": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/12",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-12"
+          }
+        }
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/16",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-16"
+          }
+        }
+      },
+      "20": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-20"
+          }
+        }
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/24",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-24"
+          }
+        }
+      },
+      "32": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/32",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-32"
+          }
+        }
+      },
+      "40": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-40"
+          }
+        }
+      },
+      "48": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/48",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-48"
+          }
+        }
+      },
+      "56": {
+        "$type": "dimension",
+        "$value": "56px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/56",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-56"
+          }
+        }
+      },
+      "64": {
+        "$type": "dimension",
+        "$value": "64px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/size/64",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-size-64"
+          }
+        }
+      }
     },
-    "weight": {
-      "$type": "fontWeight",
-      "regular":  { "$value": 400 },
-      "medium":   { "$value": 500 },
-      "semibold": { "$value": 600 }
+    "border": {
+      "0": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/border/0",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-border-0"
+          }
+        }
+      },
+      "1": {
+        "$type": "dimension",
+        "$value": "1px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/border/1",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-border-1"
+          }
+        }
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": "2px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/border/2",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-border-2"
+          }
+        }
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/border/4",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-border-4"
+          }
+        }
+      }
+    },
+    "opacity": {
+      "0": {
+        "$type": "number",
+        "$value": 0,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/0",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-0"
+          }
+        }
+      },
+      "4": {
+        "$type": "number",
+        "$value": 0.04,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/4",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-4"
+          }
+        }
+      },
+      "8": {
+        "$type": "number",
+        "$value": 0.08,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/8",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-8"
+          }
+        }
+      },
+      "12": {
+        "$type": "number",
+        "$value": 0.12,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/12",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-12"
+          }
+        }
+      },
+      "16": {
+        "$type": "number",
+        "$value": 0.16,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/16",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-16"
+          }
+        }
+      },
+      "24": {
+        "$type": "number",
+        "$value": 0.24,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/24",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-24"
+          }
+        }
+      },
+      "32": {
+        "$type": "number",
+        "$value": 0.32,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/32",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-32"
+          }
+        }
+      },
+      "48": {
+        "$type": "number",
+        "$value": 0.48,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/48",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-48"
+          }
+        }
+      },
+      "64": {
+        "$type": "number",
+        "$value": 0.64,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/64",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-64"
+          }
+        }
+      },
+      "72": {
+        "$type": "number",
+        "$value": 0.72,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/72",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-72"
+          }
+        }
+      },
+      "80": {
+        "$type": "number",
+        "$value": 0.8,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-80"
+          }
+        }
+      },
+      "100": {
+        "$type": "number",
+        "$value": 1,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/opacity/100",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-opacity-100"
+          }
+        }
+      }
+    },
+    "elevation": {
+      "0": {
+        "$type": "number",
+        "$value": 0,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/elevation/0",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-elevation-0"
+          }
+        }
+      },
+      "1": {
+        "$type": "number",
+        "$value": 1,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/elevation/1",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-elevation-1"
+          }
+        }
+      },
+      "2": {
+        "$type": "number",
+        "$value": 2,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/elevation/2",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-elevation-2"
+          }
+        }
+      },
+      "3": {
+        "$type": "number",
+        "$value": 3,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/elevation/3",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-elevation-3"
+          }
+        }
+      },
+      "4": {
+        "$type": "number",
+        "$value": 4,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/elevation/4",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-elevation-4"
+          }
+        }
+      },
+      "5": {
+        "$type": "number",
+        "$value": 5,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/elevation/5",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-elevation-5"
+          }
+        }
+      }
+    },
+    "typography": {
+      "font-weight-regular": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-weight-regular",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-weight-regular"
+          }
+        }
+      },
+      "font-weight-medium": {
+        "$type": "fontWeight",
+        "$value": 500,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-weight-medium",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-weight-medium"
+          }
+        }
+      },
+      "font-weight-semibold": {
+        "$type": "fontWeight",
+        "$value": 600,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-weight-semibold",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-weight-semibold"
+          }
+        }
+      },
+      "font-weight-bold": {
+        "$type": "fontWeight",
+        "$value": 700,
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-weight-bold",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-weight-bold"
+          }
+        }
+      },
+      "font-size-12": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-12",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-12"
+          }
+        }
+      },
+      "font-size-14": {
+        "$type": "dimension",
+        "$value": "14px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-14",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-14"
+          }
+        }
+      },
+      "font-size-16": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-16",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-16"
+          }
+        }
+      },
+      "font-size-18": {
+        "$type": "dimension",
+        "$value": "18px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-18",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-18"
+          }
+        }
+      },
+      "font-size-20": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-20",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-20"
+          }
+        }
+      },
+      "font-size-24": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-24",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-24"
+          }
+        }
+      },
+      "font-size-32": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-32",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-32"
+          }
+        }
+      },
+      "font-size-40": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-40",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-40"
+          }
+        }
+      },
+      "font-size-48": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/font-size-48",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-font-size-48"
+          }
+        }
+      },
+      "line-height-16": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-16",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-16"
+          }
+        }
+      },
+      "line-height-20": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-20",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-20"
+          }
+        }
+      },
+      "line-height-24": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-24",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-24"
+          }
+        }
+      },
+      "line-height-28": {
+        "$type": "dimension",
+        "$value": "28px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-28",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-28"
+          }
+        }
+      },
+      "line-height-32": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-32",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-32"
+          }
+        }
+      },
+      "line-height-40": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-40",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-40"
+          }
+        }
+      },
+      "line-height-48": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-48",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-48"
+          }
+        }
+      },
+      "line-height-56": {
+        "$type": "dimension",
+        "$value": "56px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/line-height-56",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-line-height-56"
+          }
+        }
+      },
+      "letter-spacing-tight": {
+        "$type": "dimension",
+        "$value": "-2px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/letter-spacing-tight",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-letter-spacing-tight"
+          }
+        }
+      },
+      "letter-spacing-normal": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/letter-spacing-normal",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-letter-spacing-normal"
+          }
+        }
+      },
+      "letter-spacing-wide": {
+        "$type": "dimension",
+        "$value": "2px",
+        "$extensions": {
+          "com.figma": {
+            "name": "foundation primitives/typography/letter-spacing-wide",
+            "collection": "00 Primitives",
+            "codeSyntax": "foundation-primitives-typography-letter-spacing-wide"
+          }
+        }
+      }
     }
   }
 }

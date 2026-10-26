@@ -15,7 +15,7 @@ const parser = withCustomConfig("tsconfig.json", {
 
 const catalog = { $generated: "do not edit — run pnpm --filter @tawan-design/ui catalog", import: "@tawan-design/ui", components: [] };
 
-for (const dir of readdirSync(componentsDir)) {
+for (const dir of existsSync(componentsDir) ? readdirSync(componentsDir) : []) {
   const file = join(componentsDir, dir, `${dir}.tsx`);
   if (!existsSync(file)) continue;
   for (const doc of parser.parse(file).filter((d) => /^[A-Z]/.test(d.displayName))) {

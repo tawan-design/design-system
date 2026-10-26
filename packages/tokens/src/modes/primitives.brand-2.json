@@ -1,0 +1,261 @@
+{
+  "$description": "Figma collection \"00 Primitives\", mode \"Brand 2\". Stored for a later theme; not built yet. Do not hand-edit.",
+  "color-primitives": {
+    "neutral": {
+      "10": {
+        "$type": "color",
+        "$value": "#f8fafc",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#f1f5f9",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#bbc2e8",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/neutral/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-neutral-30"
+          }
+        }
+      }
+    },
+    "brand": {
+      "10": {
+        "$type": "color",
+        "$value": "#ecfeff",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-10"
+          }
+        }
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#cffafe",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-20"
+          }
+        }
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#7ef2ff",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/30",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-30"
+          }
+        }
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#41e7fd",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-40"
+          }
+        }
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#01c4e2",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/50",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-50"
+          }
+        }
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#00a2be",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/60",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-60"
+          }
+        }
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#007591",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/70",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-70"
+          }
+        }
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#004356",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/80",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-80"
+          }
+        }
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#042c39",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#021a22",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/brand/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-brand-95"
+          }
+        }
+      }
+    },
+    "success": {
+      "95": {
+        "$type": "color",
+        "$value": "#054f31",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/success/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-success-95"
+          }
+        }
+      }
+    },
+    "warning": {
+      "95": {
+        "$type": "color",
+        "$value": "#7a2e0e",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/warning/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-warning-95"
+          }
+        }
+      }
+    },
+    "danger": {
+      "90": {
+        "$type": "color",
+        "$value": "#912018",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/90",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-90"
+          }
+        }
+      },
+      "95": {
+        "$type": "color",
+        "$value": "#7a271a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/danger/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-danger-95"
+          }
+        }
+      }
+    },
+    "info": {
+      "95": {
+        "$type": "color",
+        "$value": "#0c4a6e",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/info/95",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-info-95"
+          }
+        }
+      }
+    },
+    "opacity": {
+      "brand-8": {
+        "$type": "color",
+        "$value": "#06b6d414",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-8",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-8"
+          }
+        }
+      },
+      "brand-10": {
+        "$type": "color",
+        "$value": "#06b6d41a",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-10",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-10"
+          }
+        }
+      },
+      "brand-20": {
+        "$type": "color",
+        "$value": "#06b6d433",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-20",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-20"
+          }
+        }
+      },
+      "brand-40": {
+        "$type": "color",
+        "$value": "#06b6d466",
+        "$extensions": {
+          "com.figma": {
+            "name": "color primitives/opacity/brand-40",
+            "collection": "00 Primitives",
+            "codeSyntax": "color-primitives-opacity-brand-40"
+          }
+        }
+      }
+    }
+  }
+}

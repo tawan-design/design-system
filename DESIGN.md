@@ -18,15 +18,15 @@ Those are generated elsewhere (see `AGENTS.md`). If you find a hex code here, de
 
 ## Color intent
 
-- `bg/brand` is for the **single primary action** on a screen. Two brand buttons on one view is a smell.
+- `action-brand` is for the **single primary action** on a screen. Two brand buttons on one view is a smell.
 - `danger` is only for destructive or failed states, never for emphasis.
 - Status = `Badge` tones. Don't color text to show status.
 - Every screen must work in Light and Dark. Never assume a white background.
 
 ## Layout and spacing
 
-- The spacing scale is 2–64. Default rhythm: `gap-16` between related items, `gap-24` between sections, `p-20`/`p-24` inside cards.
-- Radius: `rounded-8` for controls (buttons, inputs), `rounded-12` for containers (cards, dialogs), `rounded-full` for pills and avatars.
+- The spacing scale is 0–96 (`space-*`). Default rhythm: `gap-16` between related items, `gap-24` between sections, `p-20`/`p-24` inside cards.
+- Radius: `rounded-md` for controls (buttons, inputs), `rounded-lg` for containers (cards, dialogs), `rounded-pill` for pills and avatars.
 
 ## Patterns
 
@@ -45,8 +45,8 @@ Never skip the review step. The Confirm button sits on the right, Cancel on the 
 ## Accessibility baseline
 
 - WCAG 2.1 AA contrast for all text and token pairs.
-- Every interactive element is keyboard reachable with a visible focus ring (`border/focus`).
-- Touch targets ≥ 40px (`h-40`).
+- Every interactive element is keyboard reachable with a visible focus ring (`focus-ring`, width `border-focus-ring-width`).
+- Touch targets ≥ 40px (`h-control-md`).
 
 ## Do / Don't
 

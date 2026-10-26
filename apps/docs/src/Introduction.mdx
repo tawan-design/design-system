@@ -2,15 +2,16 @@ import { Meta } from "@storybook/blocks";
 
 <Meta title="Introduction" />
 
-# Design System
+# Tawan Design System
 
-Owned by the **Design team**. Built with React + TypeScript, Radix (behavior) and Tailwind (styling via tokens).
+Owned by the **Design team**. The source of truth is the Figma file **TAWAN DESIGN SYSTEM**; this Storybook is
+generated from it. Built with React + TypeScript, Radix (behavior) and Tailwind (styling via tokens).
 
 | Section | What you'll find |
 |---|---|
-| **Foundations** | Color, spacing, radius, type, generated from Figma Variables |
-| **Components** | Every component with live controls, states, a11y checks and its Figma frame |
-| **Pages** | Real product flows built *only* from the system, the "simulated product" |
+| **Foundations** | Colors, type, spacing, sizes, radius, borders, opacity and elevation, generated from Figma Variables. Names match Figma exactly. |
+| **Components** | Rebuilt from the Figma library one by one, with live controls, states, a11y checks and the Figma frame. *Coming next: Button, Icon, Icon Button, Text-Field, Badge, Checkbox, Toggle, Modal.* |
+| **Pages** | Real product screens built *only* from the system, the "simulated product". *Built from wireframes once the core components exist.* |
 
 ## Use it in a product
 
@@ -19,10 +20,11 @@ pnpm add @tawan-design/ui
 ```
 
 ```tsx
-import "@tawan-design/ui/styles.css";
-import { Button } from "@tawan-design/ui";
+import "@tawan-design/ui/styles.css";   // once, at the app root
+
+<p className="text-body-md text-content-secondary">Token classes are named like the Figma variables.</p>
 ```
 
 ## Contribute
 
-Open an issue using a template, or a PR. The Design team reviews every change. See `CONTRIBUTING.md` in the repo.
+Open an issue using a template, or a PR. The Design team reviews every change. See `CONTRIBUTING.md` and the Playbook in `docs/`.

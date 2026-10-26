@@ -1,0 +1,60 @@
+{
+  "$description": "Figma collection \"Radius\", mode \"Rounded\". Stored for a later theme; not built yet. Do not hand-edit.",
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "{foundation-primitives.radius.8}",
+      "$extensions": {
+        "com.figma": {
+          "name": "sm",
+          "collection": "Radius",
+          "codeSyntax": "radius-sm"
+        }
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{foundation-primitives.radius.12}",
+      "$extensions": {
+        "com.figma": {
+          "name": "md",
+          "collection": "Radius",
+          "codeSyntax": "radius-md"
+        }
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{foundation-primitives.radius.16}",
+      "$extensions": {
+        "com.figma": {
+          "name": "lg",
+          "collection": "Radius",
+          "codeSyntax": "radius-lg"
+        }
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "{foundation-primitives.radius.20}",
+      "$extensions": {
+        "com.figma": {
+          "name": "xl",
+          "collection": "Radius",
+          "codeSyntax": "radius-xl"
+        }
+      }
+    },
+    "xxl": {
+      "$type": "dimension",
+      "$value": "{foundation-primitives.radius.32}",
+      "$extensions": {
+        "com.figma": {
+          "name": "xxl",
+          "collection": "Radius",
+          "codeSyntax": "radius-xxl"
+        }
+      }
+    }
+  }
+}
