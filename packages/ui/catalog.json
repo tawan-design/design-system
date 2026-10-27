@@ -1,5 +1,108 @@
 {
   "$generated": "do not edit — run pnpm --filter @tawan-design/ui catalog",
   "import": "@tawan-design/ui",
-  "components": []
+  "components": [
+    {
+      "name": "Button",
+      "description": "Button — Figma: \"Button\" (BASED COMPONENTS → Button).\nFigma \"Label\" is the children. Figma \"State\" is handled by the browser: hover, pressed (active),\nfocus (keyboard, 2px focus ring) and `disabled`.",
+      "file": "src/components/Button/Button.tsx",
+      "story": "Components/Button",
+      "props": {
+        "variant": {
+          "type": "\"filled\" | \"tonal\" | \"ghost\" | \"outline\"",
+          "required": false,
+          "default": "filled",
+          "description": "Figma \"Variant\". Filled for the single primary action; Tonal, Outline, Ghost for less emphasis."
+        },
+        "tone": {
+          "type": "\"brand\" | \"danger\" | \"neutral\"",
+          "required": false,
+          "default": "brand",
+          "description": "Figma \"Tone\". Danger only for destructive actions."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "required": false,
+          "default": "small",
+          "description": "Figma \"Size\": small 32px · medium 40px · large 48px."
+        },
+        "leftIcon": {
+          "type": "ReactNode",
+          "required": false,
+          "description": "Figma \"Show left icon\" + \"Left icon\". Pass an `<Icon />`; its size and color are set for you."
+        },
+        "rightIcon": {
+          "type": "ReactNode",
+          "required": false,
+          "description": "Figma \"Show right icon\" + \"Right icon\". Pass an `<Icon />`; its size and color are set for you."
+        }
+      }
+    },
+    {
+      "name": "Icon",
+      "description": "Icon — Figma: \"Icon\" page, Coolicon set.\nTakes the color of the surrounding text (`currentColor`), so set color with `text-content-*` / `text-icon-*`\non the icon or its parent.",
+      "file": "src/components/Icon/Icon.tsx",
+      "story": "Components/Icon",
+      "props": {
+        "name": {
+          "type": "\"add-plus\" | \"remove-minus\" | \"arrow-right-lg\" | \"arrow-left-lg\" | \"chevron-right\" | \"chevron-left\" | \"chevron-up\" | \"chevron-down\" | \"close-lg\" | \"check\" | \"check-big\" | \"search-magnifying-glass\" | \"show\" | \"hide\" | \"copy\" | \"external-link\" | \"info\" | \"triangle-warning\" | \"circle-warning\" | \"circle-check\" | \"trash-full\" | \"calendar\"",
+          "required": true,
+          "description": "Icon name: the Figma icon name in kebab case (Figma \"Edit / Add_Plus\" → `add-plus`)."
+        },
+        "size": {
+          "type": "\"xs\" | \"sm\" | \"md\" | \"lg\"",
+          "required": false,
+          "default": "md",
+          "description": "Size token: `icon-xs` 12 · `icon-sm` 16 · `icon-md` 20 · `icon-lg` 24. Inside Button and Icon Button the size is set for you."
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "Accessible name. Leave empty for decorative icons (next to text); they are hidden from screen readers."
+        }
+      }
+    },
+    {
+      "name": "IconButton",
+      "description": "Icon Button — Figma: \"Icon Button\" (BASED COMPONENTS → Icon Button).\nSame Variant/Tone colors as Button. Figma \"State\" is handled by the browser: hover, pressed, focus, `disabled`.",
+      "file": "src/components/IconButton/IconButton.tsx",
+      "story": "Components/IconButton",
+      "props": {
+        "icon": {
+          "type": "ReactNode",
+          "required": true,
+          "description": "Figma \"Icon\". Pass an `<Icon />`; its size and color are set for you."
+        },
+        "aria-label": {
+          "type": "string",
+          "required": true,
+          "description": "What the button does, read by screen readers (there is no visible label). Required."
+        },
+        "shape": {
+          "type": "\"square\" | \"circle\"",
+          "required": false,
+          "default": "square",
+          "description": "Figma \"Shape\"."
+        },
+        "variant": {
+          "type": "\"filled\" | \"tonal\" | \"ghost\" | \"outline\"",
+          "required": false,
+          "default": "filled",
+          "description": "Figma \"Variant\"."
+        },
+        "tone": {
+          "type": "\"brand\" | \"danger\" | \"neutral\"",
+          "required": false,
+          "default": "brand",
+          "description": "Figma \"Tone\". Danger only for destructive actions."
+        },
+        "size": {
+          "type": "\"xs\" | \"small\" | \"medium\" | \"large\"",
+          "required": false,
+          "default": "small",
+          "description": "Figma \"Size\": xs 24px · small 32px · medium 40px · large 48px."
+        }
+      }
+    }
+  ]
 }

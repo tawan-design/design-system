@@ -17,6 +17,15 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+/* Focus ring from Figma: a focus-ring colored stroke, border-focus-ring-width wide, drawn outside the
+   component and following its radius. Use as `focus-visible:focus-ring` on every focusable component. */
+@utility focus-ring {
+  outline-style: solid;
+  outline-width: var(--border-focus-ring-width);
+  outline-color: var(--focus-ring);
+  outline-offset: 0px;
+}
+
 @layer base {
   html, body {
     background: var(--surface-canvas);
